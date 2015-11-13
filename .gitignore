@@ -29,3 +29,5 @@ node_modules
 
 # MacOSX Shit data
 .DS_Store
+
+*~
