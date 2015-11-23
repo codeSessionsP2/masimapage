@@ -101,33 +101,6 @@
          in="SourceGraphic"
          id="feComposite3282" />
     </filter>
-    <filter
-       x="-0.2"
-       y="-0.2"
-       width="1.4"
-       height="1.4"
-       color-interpolation-filters="sRGB"
-       id="filter6559">
-      <feTurbulence
-         result="result91"
-         type="fractalNoise"
-         numOctaves="5"
-         baseFrequency="0.05"
-         id="feTurbulence6561" />
-      <feDisplacementMap
-         in2="result91"
-         scale="25"
-         xChannelSelector="R"
-         yChannelSelector="A"
-         in="SourceGraphic"
-         result="result5"
-         id="feDisplacementMap6563" />
-      <feComposite
-         in2="result5"
-         operator="atop"
-         in="SourceGraphic"
-         id="feComposite6565" />
-    </filter>
   </defs>
   <metadata
      id="metadata7">
@@ -159,9 +132,8 @@
        id="path3050"
        style="fill:#000000;fill-opacity:1;filter:url(#filter3276)" />
     <g
-       transform="matrix(-1,0,0,-1,874.2907,930.3692)"
-       id="layer1-1"
-       style="filter:url(#filter6559)">
+       transform="matrix(-1,0,0,-1,874.29072,923.238)"
+       id="layer1-1">
       <path
          d="m 276.79,765.15 0,-20 220,0 220,0 0,20 0,20 -220,0 -220,0 0,-20 z m -20,-270 0,-230 70,0 70,0 0,230 0,230 -70,0 -70,0 0,-230 z m 170,0 0,-230 70,0 70,0 0,230 0,230 -70,0 -70,0 0,-230 z m 170,0 0,-230 70,0 70,0 0,230 0,230 -70,0 -70,0 0,-230 z m -400,-40 0,-250 300,0 300,0 0,250 0,250 -20,0 -20,0 0,-230 0,-230 -260,0 -260,0 0,230 0,230 -20,0 -20,0 0,-250 z"
          id="path3050-4"
