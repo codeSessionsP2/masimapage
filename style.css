@@ -12,6 +12,7 @@ body {
   background-color: #000;
   text-align: center;
   font-size: 2em;
+  font-family: 'Righteous', cursive;
   height: 100%;
   width: 100%;
 	overflow: hidden;
@@ -31,6 +32,31 @@ body {
   font-size: 7.5vh;
   margin-top: 5vh;
   z-index: 10;
+}
+
+.footer {
+  font-size: 3vh;
+  margin-top: 0vh;
+  z-index: 10;
+}
+
+.blur_head {
+  /* ^ for Firefox */
+  -webkit-filter: blur(0.1vh);  
+  /* ^ Webkit browsers */
+  filter: blur(0.1vh);  
+}
+
+.blur_foot {
+  /* ^ for Firefox */
+  -webkit-filter: blur(0.04vh);  
+  /* ^ Webkit browsers */
+  filter: blur(0.04vh);  
+}
+
+.shadow_head {
+  text-shadow: 0 0 2vh #fff, 0 0 4vh #fff, 0 0 6vh #fff, 0 0 4vh #ff00de, 0 0 14vh #ff00de, 0 0 16vh #ff00de, 0 0 20vh #ff00de, 0 0 30vh #ff00de;
+  -webkit-font-smoothing: antialiased;
 }
 
 .content {
@@ -83,20 +109,3 @@ body {
 	z-index: 1;
 }
 
-.footer {
-  font-size: 3vh;
-  margin-top: 0vh;
-  z-index: 10;
-}
-
-.blur {
-  /* ^ for Firefox */
-  -webkit-filter: blur(1px);  
-  /* ^ Webkit browsers */
-  filter: blur(1px);  
-}
-
-.shadow {
-  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
-  -webkit-font-smoothing: antialiased;
-}
