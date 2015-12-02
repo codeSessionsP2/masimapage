@@ -3,28 +3,90 @@ html {
   -moz-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   height: 100%;
+  width: 100%;
+	overflow: hidden;
 }
 
 body {
-  color: #FFF;
+  color: #000;
   background-color: #000;
   text-align: center;
   font-size: 2em;
+  height: 100%;
+  width: 100%;
+	overflow: hidden;
+	margin: 0 0;
+}
+
+.main {
+  display: block;
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	z-index: 0;
+	vertical-align: middle;
 }
 
 .header {
-  font-size: 1.1em;
-  margin: 0em 0;
+  font-size: 7.5vh;
+  margin-top: 5vh;
+  z-index: 10;
 }
 
-.logosvg {
-  margin-top: -1.0em;
-  width: 8em;
+.content {
+  color: #333;
+  height: 50vh;
+  width: 50vh;
+  margin-top: -5vh;
+	perspective: 1500;
+	text-align: center;
+	position: relative;
+	display: inline-block;
+}
+
+.content:hover .turnaround { 
+  transform: rotateY(180deg);
+}
+.content .front { 
+  background: url(logo.svg);
+  background-size: 50vh 50vh;
+  background-repeat: no-repeat;
+}
+.content .back { 
+  background: url(logo2.svg);
+  background-size: 50vh 50vh;
+  background-repeat: no-repeat; 
+}
+
+.turnaround {
+  backface-visibility: hidden;
+	transition: .5s;
+	transform-style: preserve-3d;
+	position: relative;
+	height: 100%;
+}
+
+.front,
+.back {
+	backface-visibility: hidden;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	font-size: 3vh;
+}
+.front { 
+  z-index: 2; 
+}
+.back {
+	transform: rotateY(180deg);
+	z-index: 1;
 }
 
 .footer {
-  font-size: 0.6em;
-  margin-top: -2.15em;
+  font-size: 3vh;
+  margin-top: 0vh;
+  z-index: 10;
 }
 
 .blur {
@@ -32,4 +94,9 @@ body {
   -webkit-filter: blur(1px);  
   /* ^ Webkit browsers */
   filter: blur(1px);  
+}
+
+.shadow {
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+  -webkit-font-smoothing: antialiased;
 }
