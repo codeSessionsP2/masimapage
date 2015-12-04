@@ -8,11 +8,10 @@ html {
 }
 
 body {
+  font-size: 2vh;
   color: #fff;
   background-color: #000;
   text-align: center;
-  font-family: 'Rock Salt', cursive;
-  font-size: 2.5vh;
   height: 100%;
   width: 100%;
 	overflow: hidden;
@@ -28,52 +27,23 @@ body {
 }
 
 .header {
-  font-size: 4.5vh;
+  font-size: 6vh;
   margin-top: 5vh;
   z-index: 10;
 }
 
 .footer {
-  font-size: 2vh;
+  font-size: 3vh;
   margin-top: 0vh;
   z-index: 10;
 }
 
-.blur_head {
-  /* ^ for Firefox */
-  -webkit-filter: blur(0.1vh);  
-  /* ^ Webkit browsers */
-  filter: blur(0.1vh);  
-}
-
-.blur_logo {
-  /* ^ for Firefox */
-  -webkit-filter: blur(0.4vh);  
-  /* ^ Webkit browsers */
-  filter: blur(0.4vh);  
-}
-
-.blur_foot {
-  /* ^ for Firefox */
-  -webkit-filter: blur(0.04vh);  
-  /* ^ Webkit browsers */
-  filter: blur(0.04vh);  
-}
-
-.shadow_head {
-  text-shadow: 0 0 1vh #fff, 0 0 2vh #fff, 0 0 3vh #fff, 0 0 4vh #FFD700, 0 0 7vh #FFD700, 0 0 8vh #FFD700, 0 0 10vh #FFD700, 0 0 15vh #FFD700;
-  -webkit-font-smoothing: antialiased;
-}
-
-.shadow_foot {
-  text-shadow: 0 0 0.5vh #fff, 0 0 1vh #fff, 0 0 1.5vh #fff, 0 0 2vh #FFD700, 0 0 3.5vh #FFD700, 0 0 4vh #FFD700, 0 0 5vh #FFD700, 0 0 7.5vh #FFD700;
-  -webkit-font-smoothing: antialiased;
-}
-
 .content {
+  font-size: 2vh;
+  font-family: 'Rock Salt', cursive;
   color: #333;
-  height: 50vh;
-  width: 50vh;
+  height: 40vh;
+  width: 40vh;
   margin-top: -5vh;
 	perspective: 1500;
 	text-align: center;
@@ -86,12 +56,12 @@ body {
 }
 .content .front { 
   background: url(logo.svg);
-  background-size: 50vh 50vh;
+  background-size: 40vh 40vh;
   background-repeat: no-repeat;
 }
 .content .back { 
   background: url(logo2.svg);
-  background-size: 50vh 50vh;
+  background-size: 40vh 40vh;
   background-repeat: no-repeat; 
 }
 
@@ -117,5 +87,36 @@ body {
 .back {
 	transform: rotateY(180deg);
 	z-index: 1;
+}
+
+.blur_head {
+  /* ^ for Firefox */
+  -webkit-filter: blur(0.125vh);  
+  /* ^ Webkit browsers */
+  filter: blur(0.125vh);  
+}
+
+.blur_logo {
+  /* ^ for Firefox */
+  -webkit-filter: blur(0.15vh);  
+  /* ^ Webkit browsers */
+  filter: blur(0.15vh);  
+}
+
+.blur_foot {
+  /* ^ for Firefox */
+  -webkit-filter: blur(0.125vh);  
+  /* ^ Webkit browsers */
+  filter: blur(0.125vh);  
+}
+
+.shadow_head {
+  text-shadow: 0 0 1vh #fff, 0 0 2vh #fff, 0 0 3vh #fff, 0 0 4vh #FFD700, 0 0 7vh #FFD700, 0 0 8vh #FFD700, 0 0 10vh #FFD700, 0 0 15vh #FFD700;
+  -webkit-font-smoothing: antialiased;
+}
+
+.shadow_foot {
+  text-shadow: 0 0 0.5vh #fff, 0 0 1vh #fff, 0 0 1.5vh #fff, 0 0 2vh #FFD700, 0 0 3.5vh #FFD700, 0 0 4vh #FFD700, 0 0 5vh #FFD700, 0 0 7.5vh #FFD700;
+  -webkit-font-smoothing: antialiased;
 }
 
