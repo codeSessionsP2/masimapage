@@ -42,8 +42,8 @@ body {
   font-size: 2vh;
   font-family: 'Rock Salt', cursive;
   color: #333;
-  height: 40vh;
-  width: 40vh;
+  height: 42vh;
+  width: 42vh;
   margin-top: -5vh;
 	perspective: 1500;
 	text-align: center;
@@ -56,12 +56,12 @@ body {
 }
 .content .front { 
   background: url(logo.svg);
-  background-size: 40vh 40vh;
+  background-size: 42vh 42vh;
   background-repeat: no-repeat;
 }
 .content .back { 
   background: url(logo2.svg);
-  background-size: 40vh 40vh;
+  background-size: 42vh 42vh;
   background-repeat: no-repeat; 
 }
 
@@ -91,23 +91,23 @@ body {
 
 .blur_head {
   /* ^ for Firefox */
-  -webkit-filter: blur(0.125vh);  
-  /* ^ Webkit browsers */
-  filter: blur(0.125vh);  
-}
-
-.blur_logo {
-  /* ^ for Firefox */
   -webkit-filter: blur(0.15vh);  
   /* ^ Webkit browsers */
   filter: blur(0.15vh);  
 }
 
+.blur_logo {
+  /* ^ for Firefox */
+  -webkit-filter: blur(0.175vh);  
+  /* ^ Webkit browsers */
+  filter: blur(0.175vh);  
+}
+
 .blur_foot {
   /* ^ for Firefox */
-  -webkit-filter: blur(0.125vh);  
+  -webkit-filter: blur(0.15vh);  
   /* ^ Webkit browsers */
-  filter: blur(0.125vh);  
+  filter: blur(0.15vh);  
 }
 
 .shadow_head {
