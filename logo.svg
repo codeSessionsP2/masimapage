@@ -34,9 +34,9 @@
      fit-margin-left="150"
      fit-margin-right="150"
      fit-margin-bottom="150"
-     inkscape:zoom="0.96731219"
-     inkscape:cx="454.7542"
-     inkscape:cy="403.36447"
+     inkscape:zoom="0.48894813"
+     inkscape:cx="192.3956"
+     inkscape:cy="357.78761"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
@@ -59,13 +59,13 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
      id="layer1"
-     transform="matrix(-1,0,0,-1,946.79,935.15)"
+     transform="translate(-46.79,-55.15)"
      style="fill:#ffffff">
     <path
        id="path3050"
