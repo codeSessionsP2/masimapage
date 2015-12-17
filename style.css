@@ -18,6 +18,37 @@ body {
 	margin: 0 0;
 }
 
+span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal;
+}
+
+/* unvisited link */
+a:link {
+  color: black;
+  text-decoration: none;
+  z-index:10;
+}
+
+/* visited link */
+a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+/* selected link */
+a:active {
+  color: green;
+  text-decoration: none;
+}
+
 .main {
   display: block;
 	width: 100%;
@@ -41,9 +72,10 @@ body {
 }
 
 .content {
-  font-family: 'Rock Salt', cursive;
-  font-size: 2vh;
+  font-family: 'Orbitron', cursive;
+  font-size: 2.0vh;
   color: #000;
+  line-height: 42vh;
   height: 42vh;
   width: 42vh;
   margin-top: -7.5vh;
@@ -58,13 +90,15 @@ body {
 }
 .content .front { 
   background: url(logo.svg);
-  background-size: 42vh 42vh;
+  background-size: 38vh 38vh;
   background-repeat: no-repeat;
+  background-position: center;
 }
 .content .back { 
   background: url(logo2.svg);
   background-size: 42vh 42vh;
-  background-repeat: no-repeat; 
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .turnaround {
@@ -91,30 +125,24 @@ body {
 	z-index: 1;
 }
 
-.back_text {
-  margin-top: 13vh;
-}
 
 .blur_head,
 .blur_foot {
-  /* ^ for Firefox */
   -webkit-filter: blur(0.125vh);  
-  /* ^ Webkit browsers */
-  filter: blur(0.125vh);  
+  /* ^ for Firefox */
+  filter: blur(0.1vh);  
 }
 
 .blur_info {
+  -webkit-filter: blur(0.1vh);  
   /* ^ for Firefox */
-  -webkit-filter: blur(0.05vh);  
-  /* ^ Webkit browsers */
   filter: blur(0.05vh); 
 
 }
 
 .blur_logo {
-  /* ^ for Firefox */
   -webkit-filter: blur(0.175vh);  
-  /* ^ Webkit browsers */
+  /* ^ for Firefox */
   filter: blur(0.175vh);  
 }
 
