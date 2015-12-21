@@ -1,0 +1,167 @@
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  box-sizing: border-box; }
+
+body {
+  font-size: 2vh;
+  color: #fff;
+  background-color: #000;
+  text-align: center;
+  overflow: hidden;
+  margin: 0 0;
+  height: 100vh; }
+
+span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal; }
+
+hr {
+  width: 100%;
+  border: 0;
+  height: 0.11vh;
+  background-image: -webkit-linear-gradient(left, transparent, #404040, transparent);
+  background-image: -moz-linear-gradient(left, transparent, #404040, transparent);
+  background-image: -ms-linear-gradient(left, transparent, #404040, transparent);
+  background-image: -o-linear-gradient(left, transparent, #404040, transparent); }
+
+p {
+  display: block;
+  margin: 0;
+  box-sizing: border-box;
+  vertical-align: middle; }
+
+/* unvisited link */
+a:link {
+  color: black;
+  text-decoration: none;
+  z-index: 10; }
+
+/* visited link */
+a:visited {
+  color: black;
+  text-decoration: none; }
+
+/* mouse over link */
+a:hover {
+  color: white;
+  text-decoration: none; }
+
+/* selected link */
+a:active {
+  color: transparent;
+  text-decoration: none; }
+
+/* Remove moz dashed rect */
+a:focus, a:active,
+button::-moz-focus-inner,
+a::-moz-focus-inner,
+input::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+select::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner {
+  border: 0;
+  outline: 0; }
+
+/* Specific Content */
+.main {
+  display: block;
+  margin: 0 auto;
+  z-index: 0;
+  height: 100vh; }
+
+.header {
+  font-family: 'Ruslan Display', cursive;
+  font-size: 7vh;
+  z-index: 10;
+  height: 15vh;
+  padding-top: 5vh; }
+
+.footer {
+  font-size: 3vh;
+  height: 10vh;
+  z-index: 10;
+  font-family: 'Ruslan Display', cursive; }
+
+.content {
+  font-family: 'Orbitron', cursive;
+  font-size: 2.0vh;
+  color: #000;
+  line-height: 42vh;
+  perspective: 1500;
+  text-align: center;
+  display: inline-block;
+  height: 70vh; }
+
+.content:hover .turnaround {
+  transform: rotateY(180deg); }
+
+.content .front {
+  background: url(../logo.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain; }
+
+.content .back {
+  background: url(../logo2.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain; }
+
+.turnaround {
+  backface-visibility: hidden;
+  transition: .5s;
+  transform-style: preserve-3d;
+  height: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100vw; }
+
+.front,
+.back {
+  backface-visibility: hidden;
+  text-align: center;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
+.front {
+  z-index: 2; }
+
+.back {
+  transform: rotateY(180deg);
+  z-index: 1; }
+
+.blur_head,
+.blur_foot {
+  -webkit-filter: blur(0.125vh);
+  /* ^ for Firefox */
+  filter: blur(0.1vh); }
+
+.blur_info {
+  -webkit-filter: blur(0.1vh);
+  /* ^ for Firefox */
+  filter: blur(0.05vh); }
+
+.blur_logo {
+  -webkit-filter: blur(0.175vh);
+  /* ^ for Firefox */
+  filter: blur(0.175vh); }
+
+.shadow_head {
+  text-shadow: 0 0 1vh #fff, 0 0 2vh #fff, 0 0 3vh #fff, 0 0 4vh #FFD700, 0 0 7vh #FFD700, 0 0 8vh #FFD700, 0 0 10vh #FFD700, 0 0 15vh #FFD700;
+  -webkit-font-smoothing: antialiased; }
+
+.shadow_foot {
+  text-shadow: 0 0 0.5vh #fff, 0 0 1vh #fff, 0 0 1.5vh #fff, 0 0 2vh #FFD700, 0 0 3.5vh #FFD700, 0 0 4vh #FFD700, 0 0 5vh #FFD700, 0 0 7.5vh #FFD700;
+  -webkit-font-smoothing: antialiased; }
