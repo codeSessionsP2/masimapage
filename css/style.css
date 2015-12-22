@@ -1,0 +1,158 @@
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  box-sizing: border-box;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0; }
+
+body {
+  font-size: 2vh;
+  color: #fff;
+  background-color: #000;
+  text-align: center;
+  /*overflow: hidden;*/
+  margin: 0 0;
+  height: 100vh; }
+
+hr {
+  width: 50%;
+  border: 0;
+  height: 0.11vh;
+  background-image: -webkit-linear-gradient(left, transparent, black, transparent);
+  background-image: -moz-linear-gradient(left, transparent, black, transparent);
+  background-image: -ms-linear-gradient(left, transparent, black, transparent);
+  background-image: -o-linear-gradient(left, transparent, black, transparent); }
+
+p {
+  display: block;
+  margin: 0;
+  box-sizing: border-box;
+  vertical-align: middle; }
+
+a {
+  color: white;
+  /* unvisited link */
+  /* visited link */
+  /* mouse over link */
+  /* selected link */
+  /* Remove moz dashed rect */ }
+  a:link {
+    color: black;
+    text-decoration: none;
+    z-index: 10; }
+  a:visited {
+    color: black;
+    text-decoration: none; }
+  a:hover {
+    color: white;
+    text-decoration: none; }
+  a:active {
+    color: transparent;
+    text-decoration: none; }
+  a:focus, a:active,
+  a button::-moz-focus-inner, a::-moz-focus-inner,
+  a input::-moz-focus-inner,
+  a input[type="reset"]::-moz-focus-inner,
+  a input[type="button"]::-moz-focus-inner,
+  a input[type="submit"]::-moz-focus-inner,
+  a select::-moz-focus-inner,
+  a input[type="file"] > input[type="button"]::-moz-focus-inner {
+    border: 0;
+    outline: 0; }
+
+header {
+  z-index: 10;
+  height: 7vh;
+  padding-top: 5vh; }
+  header h1 {
+    font-family: 'Ruslan Display', cursive;
+    font-size: 7vh;
+    font-weight: normal;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0; }
+
+footer {
+  font-size: 3vh;
+  z-index: 10;
+  font-family: 'Ruslan Display', cursive; }
+
+.content {
+  font-family: 'Orbitron', cursive;
+  font-size: 2.0vh;
+  color: #000;
+  text-align: center;
+  display: inline-block;
+  width: 100vw; }
+  .content .turnaround-container {
+    perspective: 1500;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: -3.5vh;
+    height: 90vw;
+    width: 90vw;
+    max-height: 50vh;
+    max-width: 50vh; }
+    .content .turnaround-container:hover .turnaround, .content .turnaround-container .hover .turnaround {
+      transform: rotateY(180deg); }
+    .content .turnaround-container .turnaround {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      transition: .5s;
+      transform-style: preserve-3d; }
+      .content .turnaround-container .turnaround .front {
+        z-index: 2;
+        background: url("../logo.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain; }
+      .content .turnaround-container .turnaround .back {
+        background: url("../logo2.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        transform: rotateY(180deg);
+        z-index: 1; }
+        .content .turnaround-container .turnaround .back span {
+          display: block;
+          vertical-align: middle;
+          line-height: normal;
+          padding-top: 45%; }
+      .content .turnaround-container .turnaround .front,
+      .content .turnaround-container .turnaround .back {
+        position: absolute;
+        top: 0;
+        backface-visibility: hidden;
+        text-align: center;
+        width: 100%;
+        height: 100%; }
+
+.blur_header,
+.blur_footer {
+  -webkit-filter: blur(0.125vh);
+  /* ^ for Firefox */
+  filter: blur(0.125vh); }
+
+.blur_info {
+  -webkit-filter: blur(0.1vh);
+  /* ^ for Firefox */
+  filter: blur(0.05vh); }
+
+.blur_logo {
+  -webkit-filter: blur(0.175vh);
+  /* ^ for Firefox */
+  filter: blur(0.175vh); }
+
+.shadow_head {
+  text-shadow: 0 0 1vh #fff, 0 0 2vh #fff, 0 0 3vh #fff, 0 0 4vh #FFD700, 0 0 7vh #FFD700, 0 0 8vh #FFD700, 0 0 10vh #FFD700, 0 0 15vh #FFD700;
+  -webkit-font-smoothing: antialiased; }
+
+.shadow_foot {
+  text-shadow: 0 0 0.5vh #fff, 0 0 1vh #fff, 0 0 1.5vh #fff, 0 0 2vh #FFD700, 0 0 3.5vh #FFD700, 0 0 4vh #FFD700, 0 0 5vh #FFD700, 0 0 7.5vh #FFD700;
+  -webkit-font-smoothing: antialiased; }
