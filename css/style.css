@@ -18,13 +18,13 @@ body {
   height: 100vh; }
 
 hr {
-  width: 100%;
+  width: 50%;
   border: 0;
   height: 0.11vh;
-  background-image: -webkit-linear-gradient(left, transparent, #404040, transparent);
-  background-image: -moz-linear-gradient(left, transparent, #404040, transparent);
-  background-image: -ms-linear-gradient(left, transparent, #404040, transparent);
-  background-image: -o-linear-gradient(left, transparent, #404040, transparent); }
+  background-image: -webkit-linear-gradient(left, transparent, black, transparent);
+  background-image: -moz-linear-gradient(left, transparent, black, transparent);
+  background-image: -ms-linear-gradient(left, transparent, black, transparent);
+  background-image: -o-linear-gradient(left, transparent, black, transparent); }
 
 p {
   display: block;
@@ -40,11 +40,11 @@ a {
   /* selected link */
   /* Remove moz dashed rect */ }
   a:link {
-    color: white;
+    color: black;
     text-decoration: none;
     z-index: 10; }
   a:visited {
-    color: white;
+    color: black;
     text-decoration: none; }
   a:hover {
     color: white;
@@ -92,10 +92,11 @@ footer {
     perspective: 1500;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: -3.5vh;
     height: 90vw;
     width: 90vw;
-    max-height: 70vh;
-    max-width: 70vh; }
+    max-height: 50vh;
+    max-width: 50vh; }
     .content .turnaround-container:hover .turnaround, .content .turnaround-container .hover .turnaround {
       transform: rotateY(180deg); }
     .content .turnaround-container .turnaround {
@@ -136,7 +137,7 @@ footer {
 .blur_footer {
   -webkit-filter: blur(0.125vh);
   /* ^ for Firefox */
-  filter: blur(0.1vh); }
+  filter: blur(0.125vh); }
 
 .blur_info {
   -webkit-filter: blur(0.1vh);

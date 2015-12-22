@@ -18,12 +18,11 @@ body {
 	/*overflow: hidden;*/
 	margin: 0 0;
   height: 100vh;
-
 }
 
 
 hr {
-  width: 100%;
+  width: 50%;
   border: 0;
   height: 0.11vh;
   @include hr_gradient();
@@ -41,14 +40,14 @@ a {
   color: white;
   /* unvisited link */
   &:link {
-    color: white;
+    color: black;
     text-decoration: none;
     z-index:10;
   }
 
   /* visited link */
   &:visited {
-    color: white;
+    color: black;
     text-decoration: none;
   }
 
@@ -114,11 +113,12 @@ footer {
 
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: -3.5vh;
     height: 90vw;
     width: 90vw;
 
-    max-height: 70vh; 
-    max-width: 70vh;
+    max-height: 50vh; 
+    max-width: 50vh;
 
     &:hover .turnaround, .hover .turnaround { 
       transform: rotateY(180deg);
@@ -170,7 +170,7 @@ footer {
 
 .blur_header,
 .blur_footer {
-  @include blur_helper(0.125vh,0.1vh);
+  @include blur_helper(0.125vh,0.125vh);
 }
 
 .blur_info {

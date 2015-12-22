@@ -1,15 +1,14 @@
 @mixin hr_gradient {
-	background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(64,64,64,1.0), rgba(0,0,0,0));
-  background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(64,64,64,1.0), rgba(0,0,0,0));
-  background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(64,64,64,1.0), rgba(0,0,0,0));
-  background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(64,64,64,1.0), rgba(0,0,0,0));
+	background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,1.0), rgba(0,0,0,0));
+  background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,1.0), rgba(0,0,0,0));
+  background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,1.0), rgba(0,0,0,0));
+  background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,1.0), rgba(0,0,0,0));
 }
 
 @mixin blur_helper( $blur_webkit, $blur_firefox) {
 	  -webkit-filter: blur($blur_webkit);  
   	/* ^ for Firefox */
-  	filter: blur($blur_firefox);  
-
+  	filter: blur($blur_firefox);
 }
 
 @mixin webkit_reset {
@@ -17,7 +16,6 @@
   -webkit-margin-after: 0;
   -webkit-margin-start: 0;
   -webkit-margin-end: 0;
-
 }
 
 @mixin logo_svg($filename) {
