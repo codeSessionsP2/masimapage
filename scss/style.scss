@@ -85,19 +85,24 @@ header {
     font-size: 7vh;
     font-weight: normal;
     @include webkit_reset();
-
   }
+  span {
+      font-family: 'Architects Daughter', cursive;
+      font-size: 8.5vh;
+      letter-spacing: 0.625vh;
+      margin-left: 0.75vh;
+      padding-top: 0.75vh;
+      vertical-align: middle;
+    }
+  
   z-index: 10;
   height: 7vh;
-  padding-top: 5vh;
 }
 
 footer {
-  font-size: 3vh;
-
-  z-index: 10;
   font-family: 'Ruslan Display', cursive;
-
+  font-size: 3vh;
+  z-index: 10;
 }
 
 .content {
@@ -163,7 +168,6 @@ footer {
       }
     }
   }
-
 }
 
 
