@@ -21,21 +21,31 @@
 </head>
 
 <body>
-  <div class="main">
-    <p class="header blur_head">/\/\#\sI/\/\#\</p>
-    <div class="content">
+  <header class='blur_header'>
+    <h1>/\/\#\sI/\/\#\</h1>
+  </header>
+
+  <div class="content">
+
+    <div class="turnaround-container" ontouchstart="this.classList.toggle('hover');">
       <div class="turnaround">
-        <div class="front blur_logo"></div>
+        <div class="front blur_logo">
+        </div>
         <div class="back blur_info">
           <span><a href="index.html">plug in headphones<hr>click to listen</a></span>
         </div> 
       </div>
     </div>
-    <p class="footer blur_foot">.psych:o:lectro.</p>
   </div>
 
+  <footer class="blur_footer">
+    .psych:o:lectro.
+  </footer>
+
+  <!-- the following script is only for development phase and has to be removed upon production stage -->
   <script type='text/javascript' id="__bs_script__">//<![CDATA[
     document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.2.10.1.js'><\/script>".replace("HOST", location.hostname));
 //]]></script>
+
 </body>
 </html>

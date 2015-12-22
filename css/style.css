@@ -2,21 +2,20 @@ html {
   -webkit-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0; }
 
 body {
   font-size: 2vh;
   color: #fff;
   background-color: #000;
   text-align: center;
-  overflow: hidden;
+  /*overflow: hidden;*/
   margin: 0 0;
   height: 100vh; }
-
-span {
-  display: inline-block;
-  vertical-align: middle;
-  line-height: normal; }
 
 hr {
   width: 100%;
@@ -33,57 +32,52 @@ p {
   box-sizing: border-box;
   vertical-align: middle; }
 
-/* unvisited link */
-a:link {
-  color: black;
-  text-decoration: none;
-  z-index: 10; }
-
-/* visited link */
-a:visited {
-  color: black;
-  text-decoration: none; }
-
-/* mouse over link */
-a:hover {
+a {
   color: white;
-  text-decoration: none; }
+  /* unvisited link */
+  /* visited link */
+  /* mouse over link */
+  /* selected link */
+  /* Remove moz dashed rect */ }
+  a:link {
+    color: white;
+    text-decoration: none;
+    z-index: 10; }
+  a:visited {
+    color: white;
+    text-decoration: none; }
+  a:hover {
+    color: white;
+    text-decoration: none; }
+  a:active {
+    color: transparent;
+    text-decoration: none; }
+  a:focus, a:active,
+  a button::-moz-focus-inner, a::-moz-focus-inner,
+  a input::-moz-focus-inner,
+  a input[type="reset"]::-moz-focus-inner,
+  a input[type="button"]::-moz-focus-inner,
+  a input[type="submit"]::-moz-focus-inner,
+  a select::-moz-focus-inner,
+  a input[type="file"] > input[type="button"]::-moz-focus-inner {
+    border: 0;
+    outline: 0; }
 
-/* selected link */
-a:active {
-  color: transparent;
-  text-decoration: none; }
-
-/* Remove moz dashed rect */
-a:focus, a:active,
-button::-moz-focus-inner,
-a::-moz-focus-inner,
-input::-moz-focus-inner,
-input[type="reset"]::-moz-focus-inner,
-input[type="button"]::-moz-focus-inner,
-input[type="submit"]::-moz-focus-inner,
-select::-moz-focus-inner,
-input[type="file"] > input[type="button"]::-moz-focus-inner {
-  border: 0;
-  outline: 0; }
-
-/* Specific Content */
-.main {
-  display: block;
-  margin: 0 auto;
-  z-index: 0;
-  height: 100vh; }
-
-.header {
-  font-family: 'Ruslan Display', cursive;
-  font-size: 7vh;
+header {
   z-index: 10;
-  height: 15vh;
+  height: 7vh;
   padding-top: 5vh; }
+  header h1 {
+    font-family: 'Ruslan Display', cursive;
+    font-size: 7vh;
+    font-weight: normal;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0; }
 
-.footer {
+footer {
   font-size: 3vh;
-  height: 10vh;
   z-index: 10;
   font-family: 'Ruslan Display', cursive; }
 
@@ -91,59 +85,55 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
   font-family: 'Orbitron', cursive;
   font-size: 2.0vh;
   color: #000;
-  line-height: 42vh;
-  perspective: 1500;
   text-align: center;
   display: inline-block;
-  height: 70vh; }
+  width: 100vw; }
+  .content .turnaround-container {
+    perspective: 1500;
+    margin-left: auto;
+    margin-right: auto;
+    height: 90vw;
+    width: 90vw;
+    max-height: 70vh;
+    max-width: 70vh; }
+    .content .turnaround-container:hover .turnaround, .content .turnaround-container .hover .turnaround {
+      transform: rotateY(180deg); }
+    .content .turnaround-container .turnaround {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      transition: .5s;
+      transform-style: preserve-3d; }
+      .content .turnaround-container .turnaround .front {
+        z-index: 2;
+        background: url("../logo.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain; }
+      .content .turnaround-container .turnaround .back {
+        background: url("../logo2.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        transform: rotateY(180deg);
+        z-index: 1; }
+        .content .turnaround-container .turnaround .back span {
+          display: block;
+          vertical-align: middle;
+          line-height: normal;
+          padding-top: 45%; }
+      .content .turnaround-container .turnaround .front,
+      .content .turnaround-container .turnaround .back {
+        position: absolute;
+        top: 0;
+        backface-visibility: hidden;
+        text-align: center;
+        width: 100%;
+        height: 100%; }
 
-.content:hover .turnaround {
-  transform: rotateY(180deg); }
-
-.content .front {
-  background: url(../logo.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain; }
-
-.content .back {
-  background: url(../logo2.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain; }
-
-.turnaround {
-  backface-visibility: hidden;
-  transition: .5s;
-  transform-style: preserve-3d;
-  height: 100%;
-  position: relative;
-  top: 0;
-  left: 0;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 100vw; }
-
-.front,
-.back {
-  backface-visibility: hidden;
-  text-align: center;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%; }
-
-.front {
-  z-index: 2; }
-
-.back {
-  transform: rotateY(180deg);
-  z-index: 1; }
-
-.blur_head,
-.blur_foot {
+.blur_header,
+.blur_footer {
   -webkit-filter: blur(0.125vh);
   /* ^ for Firefox */
   filter: blur(0.1vh); }
