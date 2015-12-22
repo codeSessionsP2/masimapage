@@ -3,33 +3,32 @@ This is the source of our plain static masima landing page.
 
 Check it out @ [masima.rocks](http://masima.rocks)
 
-For development workflow gulp, sass and browser-sync are used.
+For development workflow gulp, sass and browser-sync is used.
 
-## Requirements ##
+# Build Requirements
 
 npm >= 3.4.0
 
-For instructions have a look at [node.js](https://nodejs.org/en/download/)
+For installation instructions have a look at [node.js](https://nodejs.org/en/download/)
 
-## Installation instructions ##
-
-### Gulp ###
+### Gulp
 
 To install gulb global: 
 ```
 npm install --global gulp
 ```
 
-### Installing dependencies for Gulp-Runner task ###
+# Build Instructions
 
-To install all dependencies for the gulpfile.js change to project directory and run:
+## Installing dependencies for Gulp-Runner task
+
+To install all dependencies for the *gulpfile.js* change to project directory and execute:
 ```
 npm install gulp gulp-util gulp-sass gulp-uglify gulp-rename gulp-minify-css gulp-notify gulp-concat gulp-plumber browser-sync node-neat --save-dev
 ```
 
 ## Running ##
-Go to console and change to project directory.
-run:
+Go to console and change to project directory and execute:
 ```
 gulp
 ```
