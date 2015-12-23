@@ -130,6 +130,9 @@ footer {
           vertical-align: middle;
           line-height: normal;
           padding-top: 45%; }
+        .content .turnaround-container .turnaround .back button {
+          position: relative;
+          margin-top: 47.5%; }
       .content .turnaround-container .turnaround .front,
       .content .turnaround-container .turnaround .back {
         position: absolute;
