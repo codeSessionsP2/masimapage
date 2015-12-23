@@ -4,12 +4,47 @@
   <title>./\/\#\sI/\/\#\.</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <meta name="mobile-web-app-capable" content="yes">  
+  <meta name="author" content="mxklb">
+  <meta name="application-name" content="M.R">
+  <meta name="apple-mobile-web-app-title" content="M.R">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="msapplication-starturl" content="index.html">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="google" content="notranslate">
+  
+  <link rel="home" href="index.html">
+  <link href='https://fonts.googleapis.com/css?family=Ruslan+Display|Orbitron|Architects+Daughter' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body>
-  <p class="header blur">./\/\#\sI/\/\#\.</p>
-  <p class="logo blur"><img class="logosvg" src="logo.svg"></p>
-  <p class="footer blur">.psych:o:lectro.</p>
+  <header class='blur_header'>
+    <h1>/\/\#\<span>SI</span>/\/\#\</h1>
+  </header>
+
+  <div class="content">
+    <div class="turnaround-container" ontouchstart="this.classList.toggle('hover');">
+      <div class="turnaround">
+        <div class="front blur_logo">
+        </div>
+        <div class="back blur_info">
+          <span><a href="index.html">plug in headphones<hr>click to listen</a></span>
+        </div> 
+      </div>
+    </div>
+  </div>
+
+  <footer class="blur_footer">
+    .psych:o:lectro.
+  </footer>
+
+  <!-- the following script is only for development phase and has to be removed upon production stage -->
+  <!--<script type='text/javascript' id="__bs_script__">//<![CDATA[
+      document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.2.10.1.js'><\/script>".replace("HOST", location.hostname));
+      //]]></script>
+  -->
 </body>
 </html>
