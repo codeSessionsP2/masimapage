@@ -5,7 +5,7 @@ Check it out @ [masima.rocks](http://masima.rocks)
 
 For development workflow gulp, sass and browser-sync is used.
 
-# Build Requirements
+# Build Dependencies
 
 npm >= 3.4.0
 
@@ -13,7 +13,7 @@ For installation instructions have a look at [node.js](https://nodejs.org/en/dow
 
 ### Gulp
 
-To install gulb global: 
+To install gulp global: 
 ```
 npm install --global gulp
 ```
@@ -27,7 +27,7 @@ To install all dependencies for the *gulpfile.js* change to project directory an
 npm install gulp gulp-util gulp-sass gulp-uglify gulp-rename gulp-minify-css gulp-notify gulp-concat gulp-plumber browser-sync node-neat --save-dev
 ```
 
-## Running ##
+## Running
 Go to console and change to project directory and execute:
 ```
 gulp
