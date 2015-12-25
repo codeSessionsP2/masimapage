@@ -20,9 +20,9 @@
   <link rel="stylesheet" type="text/css" href="css/style.css">
 
   <script>
-  function aud_play_pause() {
+  function playAudio() {
     var myAudio = document.getElementById("mp3");
-    if (myAudio.paused) {
+    if( myAudio.paused ) {
       myAudio.play();
     } else {
       myAudio.pause();
@@ -43,11 +43,11 @@
         <div class="front blur_logo">
         </div>
         <div class="back blur_info">
-          <button type="button" onclick="aud_play_pause()">click to play</button>
+          <button type="button" onclick="playAudio();"></button>
           <audio id="mp3">
             <source src="test.mp3" type="audio/mpeg;" codecs="mp3">
             <!-- add your fallback solution here -->
-            <span><a href="linktosoundcloud">plug in headphones<hr>click to listen</a></span>
+            <span><a href="https://soundcloud.com/masimarocks">plug in headphones<hr>click to listen</a></span>
           </audio>
         </div> 
       </div>
