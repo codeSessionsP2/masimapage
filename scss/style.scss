@@ -147,10 +147,10 @@ footer {
 
       .front { 
         z-index: 2; 
-        @include background_url('../logo.svg');
+        @include background_url('../img/logo.svg');
       }
       .back { 
-        @include background_url('../logo2.svg');
+        @include background_url('../img/greenspot.svg');
         transform: rotateY(180deg);
         z-index: 1;
 
@@ -168,7 +168,7 @@ footer {
           border: none;
           display: block;
           vertical-align: middle;
-          @include background_url('../play-button.png');
+          @include background_url('../img/play-button.png');
           background-size: 7.5vh 7.5vh;
           
         }
