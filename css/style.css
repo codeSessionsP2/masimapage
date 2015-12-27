@@ -1,3 +1,15 @@
+@font-face {
+  font-family: "Orbitron";
+  src: url("../fonts/Orbitron/Orbitron-Regular.ttf"); }
+
+@font-face {
+  font-family: "Ruslan Display";
+  src: url("../fonts/Ruslan_Display/RuslanDisplay.ttf"); }
+
+@font-face {
+  font-family: "Architects Daughter";
+  src: url("../fonts/Architects_Daughter/ArchitectsDaughter.ttf"); }
+
 html {
   -webkit-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
@@ -67,7 +79,7 @@ header {
   z-index: 10;
   height: 7vh; }
   header h1 {
-    font-family: 'Ruslan Display', cursive;
+    font-family: 'Ruslan Display';
     font-size: 7vh;
     font-weight: normal;
     -webkit-margin-before: 0;
@@ -75,7 +87,7 @@ header {
     -webkit-margin-start: 0;
     -webkit-margin-end: 0; }
   header span {
-    font-family: 'Architects Daughter', cursive;
+    font-family: 'Architects Daughter';
     font-size: 8.5vh;
     letter-spacing: 0.625vh;
     margin-left: 0.75vh;
@@ -83,12 +95,12 @@ header {
     vertical-align: middle; }
 
 footer {
-  font-family: 'Ruslan Display', cursive;
+  font-family: 'Ruslan Display';
   font-size: 3vh;
   z-index: 10; }
 
 .content {
-  font-family: 'Orbitron', cursive;
+  font-family: 'Orbitron';
   font-size: 2.0vh;
   color: #000;
   text-align: center;
