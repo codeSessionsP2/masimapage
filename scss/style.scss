@@ -141,10 +141,10 @@ footer {
 
       .front { 
         z-index: 2; 
-        @include logo_svg('../logo.svg')
+        @include logo_svg('../img/logo.svg')
       }
       .back { 
-        @include logo_svg('../logo2.svg')
+        @include logo_svg('../img/greenspot.svg')
         transform: rotateY(180deg);
         z-index: 1;
 

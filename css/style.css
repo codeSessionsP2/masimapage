@@ -114,12 +114,12 @@ footer {
       transform-style: preserve-3d; }
       .content .turnaround-container .turnaround .front {
         z-index: 2;
-        background: url("../logo.svg");
+        background: url("../img/logo.svg");
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain; }
       .content .turnaround-container .turnaround .back {
-        background: url("../logo2.svg");
+        background: url("../img/greenspot.svg");
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
