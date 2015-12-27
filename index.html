@@ -24,7 +24,12 @@
     var myAudio = document.getElementById("mp3");
     if( myAudio.paused ) {
       myAudio.play();
+      document.getElementById("audioButton").style.backgroundImage = "url(img/pause-button.png)";
+      myAudio.addEventListener('ended', function() {
+        document.getElementById("audioButton").style.backgroundImage = "url(img/play-button.png)";
+      });
     } else {
+      document.getElementById("audioButton").style.backgroundImage = "url(img/play-button.png)";
       myAudio.pause();
     }
   }
@@ -43,7 +48,7 @@
         <div class="front blur_logo">
         </div>
         <div class="back blur_info">
-          <button type="button" onclick="playAudio();"></button>
+          <button id="audioButton" type="button" onclick="playAudio();"></button>
           <audio id="mp3">
             <source src="test.mp3" type="audio/mpeg;" codecs="mp3">
             <!-- add your fallback solution here -->
