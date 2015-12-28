@@ -68,7 +68,6 @@ button::-moz-focus-inner {
   border: 0; }
 
 header {
-  z-index: 10;
   height: 7vh; }
   header h1 {
     font-family: 'Ruslan Display', cursive;
@@ -88,8 +87,7 @@ header {
 
 footer {
   font-family: 'Ruslan Display', cursive;
-  font-size: 3vh;
-  z-index: 10; }
+  font-size: 3vh; }
 
 .content {
   font-family: 'Orbitron', cursive;
@@ -97,8 +95,7 @@ footer {
   color: #000;
   text-align: center;
   display: inline-block;
-  width: 100vw;
-  z-index: 1; }
+  width: 100vw; }
   .content .turnaround-container {
     perspective: 1500;
     margin-left: auto;
@@ -118,7 +115,6 @@ footer {
       transition: .5s;
       transform-style: preserve-3d; }
       .content .turnaround-container .turnaround .front {
-        z-index: 2;
         background-color: transparent;
         background: url("../img/logo.svg");
         background-repeat: no-repeat;
@@ -130,8 +126,7 @@ footer {
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
-        transform: rotateY(180deg);
-        z-index: 1; }
+        transform: rotateY(180deg); }
         .content .turnaround-container .turnaround .back span {
           display: block;
           vertical-align: middle;

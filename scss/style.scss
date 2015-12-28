@@ -100,14 +100,12 @@ header {
       vertical-align: middle;
     }
   
-  z-index: 10;
   height: 7vh;
 }
 
 footer {
   font-family: 'Ruslan Display', cursive;
   font-size: 3vh;
-  z-index: 10;
 }
 
 .content {
@@ -117,7 +115,6 @@ footer {
 	text-align: center;
 	display: inline-block;
   width: 100vw;
-  z-index: 1;
 
   .turnaround-container {
     perspective: 1500;
@@ -146,14 +143,12 @@ footer {
       transform-style: preserve-3d;
 
       .front { 
-        z-index: 2; 
         @include background_url('../img/logo.svg');
       }
       .back { 
         @include background_url('../img/greenspot.svg');
         transform: rotateY(180deg);
-        z-index: 1;
-
+        
         span {
           display: block;
           vertical-align: middle;
@@ -169,8 +164,7 @@ footer {
           display: block;
           vertical-align: middle;
           @include background_url('../img/play-button.png');
-          background-size: 7.5vh 7.5vh;
-          
+          background-size: 7.5vh 7.5vh;          
         }
       }
 

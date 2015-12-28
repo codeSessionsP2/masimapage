@@ -43,15 +43,15 @@
   </header>
 
   <div class="content">
-    <div class="turnaround-container" ontouchstart="this.classList.toggle('hover');">
+    <div class="turnaround-container" ontouchstart="this.classList.toggle('hover')">
       <div class="turnaround">
         <div class="front blur_logo">
         </div>
         <div class="back blur_info">
-          <button id="audioButton" type="button" onclick="playAudio();"></button>
+          <button id="audioButton" type="button" onclick="playAudio()"></button>
           <audio id="mp3">
-            <source src="test.mp3" type="audio/mpeg;" codecs="mp3">
-            <!-- add your fallback solution here -->
+            <source src="test.mp3" type="audio/mpeg" codecs="mp3">
+            <!-- add html5 audio tag fallback solution here -->
             <span><a href="https://soundcloud.com/masimarocks">plug in headphones<hr>click to listen</a></span>
           </audio>
         </div> 
