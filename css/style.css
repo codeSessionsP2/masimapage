@@ -78,13 +78,6 @@ header {
     -webkit-margin-after: 0;
     -webkit-margin-start: 0;
     -webkit-margin-end: 0; }
-  header span {
-    font-family: 'Architects Daughter', cursive;
-    font-size: 8.5vh;
-    letter-spacing: 0.625vh;
-    margin-left: 0.75vh;
-    padding-top: 0.75vh;
-    vertical-align: middle; }
 
 footer {
   font-family: 'Ruslan Display', cursive;
