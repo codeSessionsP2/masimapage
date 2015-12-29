@@ -1,5 +1,7 @@
 @import "mixins";
 
+/* fix browser defaults */
+*{margin:0px;padding:0px;}
 
 html {
   -webkit-text-size-adjust: 100%;
@@ -20,7 +22,6 @@ body {
   height: 100vh;
 }
 
-
 hr {
   width: 50%;
   border: 0;
@@ -34,7 +35,6 @@ p {
   box-sizing: border-box;
   vertical-align: middle;
 }
-
 
 a {
   color: white;
@@ -83,6 +83,17 @@ button::-moz-focus-inner {
   border: 0;
 }
 
+/* Vertical center all in main */
+.main {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  overflow:hidden;
+}
 
 header {
   h1 {
@@ -112,17 +123,11 @@ footer {
   z-index: 1;
 
   .turnaround-container {
-    perspective: 1500;
-
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: -3.5vh;
-    height: 90vw;
-    width: 90vw;
-
-    max-height: 50vh; 
-    max-width: 50vh;
-
+    display: block;
+    margin: 0 auto;
+    height: 50vh;
+    width: 50vh;
+    
     &:hover .turnaround, .hover .turnaround { 
       transform: rotateY(180deg);
     }
@@ -162,7 +167,6 @@ footer {
           vertical-align: middle;
           @include background_url('../img/play-button.png');
           background-size: 7.5vh 7.5vh;
-          
         }
       }
 
