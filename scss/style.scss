@@ -143,7 +143,7 @@ footer {
         @include background_url('../img/logo.svg');
       }
       .back { 
-        @include background_url('../img/greenspot.svg');
+        @include background_url('../img/spot.svg');
         transform: rotateY(180deg);
         
         span {

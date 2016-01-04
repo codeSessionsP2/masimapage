@@ -15,7 +15,7 @@
    height="1499.3308"
    id="svg2"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="logo2.svg">
+   sodipodi:docname="spot.svg">
   <sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
@@ -29,11 +29,11 @@
      inkscape:window-height="760"
      id="namedview26"
      showgrid="false"
-     inkscape:zoom="0.30741532"
-     inkscape:cx="731.19781"
-     inkscape:cy="792.95822"
-     inkscape:window-x="17"
-     inkscape:window-y="0"
+     inkscape:zoom="0.2466702"
+     inkscape:cx="601.7156"
+     inkscape:cy="794.21124"
+     inkscape:window-x="702"
+     inkscape:window-y="277"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg2"
      fit-margin-top="0"
@@ -45,7 +45,7 @@
     <linearGradient
        id="linearGradient3790">
       <stop
-         style="stop-color:#14ff0e;stop-opacity:1;"
+         style="stop-color:#ffffff;stop-opacity:1;"
          offset="0"
          id="stop3792" />
       <stop
@@ -207,7 +207,7 @@
      y="-162.91554" />
   <path
      inkscape:connector-curvature="0"
-     style="fill:url(#radialGradient3796);fill-opacity:1;stroke:none;stroke-width:1.00019479;marker-start:none;marker-mid:none"
+     style="fill:url(#radialGradient3796);fill-opacity:1.0;stroke:none;stroke-width:1.00019478999999989;marker-start:none;marker-mid:none"
      id="path2987"
      d="m 1531.6841,749.92237 a 765.84209,749.66538 0 0 1 -1531.684055,0 765.84209,749.66538 0 1 1 1531.684055,0 z" />
 </svg>
