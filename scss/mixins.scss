@@ -18,7 +18,8 @@
   -webkit-margin-end: 0;
 }
 
-@mixin logo_svg($filename) {
+@mixin background_url($filename) {
+  background-color: transparent;
   background: url($filename);
   background-repeat: no-repeat;
   background-position: center;

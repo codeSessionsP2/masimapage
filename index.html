@@ -7,39 +7,93 @@
 
   <meta name="mobile-web-app-capable" content="yes">  
   <meta name="author" content="mxklb">
-  <meta name="application-name" content="M.R">
-  <meta name="apple-mobile-web-app-title" content="M.R">
+  <meta name="application-name" content="MASIMA">
+  <meta name="apple-mobile-web-app-title" content="MASIMA">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="msapplication-starturl" content="index.html">
   <meta name="msapplication-tap-highlight" content="no">
   <meta name="google" content="notranslate">
   
+  <!-- favicon icons for cross platform usage: generated with realfavicongenerator.net -->
+  <link rel="icon" type="image/svg+xml" href="img/icons/safari-pinned-tab.svg">
+  <!-- Touch Icons - iOS and Android 2.1+ 180x180 pixels in size. -->  
+  <link rel="apple-touch-icon" sizes="57x57" href="/img/icons/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/img/icons/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/img/icons/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/icons/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/img/icons/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/img/icons/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/img/icons/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/img/icons/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/icons/apple-touch-icon-180x180.png">
+  <link rel="apple-touch-icon-precomposed" href="/img/icons/apple-touch-icon-180x180.png">
+  <link rel="apple-touch-startup-image" href="/img/icons/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="/img/icons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/img/icons/favicon-194x194.png" sizes="194x194">
+  <link rel="icon" type="image/png" href="/img/icons/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/img/icons/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="/img/icons/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="/img/icons/manifest.json">
+  <link rel="mask-icon" href="/img/icons/safari-pinned-tab.svg" color="#5bbad5">
+  <!-- Firefox, Chrome, Safari, IE 11+ and Opera. 196x196 pixels in size. -->
+  <link rel="icon" href="img/icons/favicon-196x196.png"> 
+  <link rel="shortcut icon" sizes="196x196" href="img/icons/favicon-196x196.png">
+  <!-- For IE 9 and below. ICO should be 32x32 pixels in size -->
+  <!--[if IE]><link rel="shortcut icon" href="img/icons/favicon.ico"><![endif]-->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/img/icons/mstile-144x144.png">
+  <meta name="msapplication-config" content="/img/icons/browserconfig.xml">
+  <meta name="theme-color" content="#000000">
+  
   <link rel="home" href="index.html">
   <link rel="stylesheet" type="text/css" href="css/style.css">
+
+  <script>
+  function playAudio() {
+    var myAudio = document.getElementById("mp3");
+    if( myAudio.paused ) {
+      myAudio.play();
+      document.getElementById("audioButton").style.backgroundImage = "url(img/pause-button.png)";
+      myAudio.addEventListener('ended', function() {
+        document.getElementById("audioButton").style.backgroundImage = "url(img/play-button.png)";
+      });
+    } else {
+      document.getElementById("audioButton").style.backgroundImage = "url(img/play-button.png)";
+      myAudio.pause();
+    }
+  }
+  </script>
+
 </head>
 
 <body>
-  <header class='blur_header'>
-    <h1>/\/\#\<span>SI</span>/\/\#\</h1>
-  </header>
+  <div class="main">
+    <header class='blur_header'>
+      <h1>.masima.</h1>
+    </header>
 
-  <div class="content">
-    <div class="turnaround-container" ontouchstart="this.classList.toggle('hover');">
-      <div class="turnaround">
-        <div class="front blur_logo">
+    <div class="content">
+    <div class="turnaround-container" ontouchstart="this.classList.toggle('hover')">
+        <div class="turnaround">
+          <div class="front blur_logo">
+          </div>
+          <div class="back blur_info">
+          <button id="audioButton" type="button" onclick="playAudio()"></button>
+            <audio id="mp3">
+            <source src="budapest.mp3" type="audio/mpeg" codecs="mp3">
+            <!-- add html5 audio tag fallback solution here -->
+              <span><a href="https://soundcloud.com/masimarocks">plug in headphones<hr>click to listen</a></span>
+            </audio>
+          </div> 
         </div>
-        <div class="back blur_info">
-          <span><a href="index.html">plug in headphones<hr>click to listen</a></span>
-        </div> 
       </div>
     </div>
+
+    <footer class="blur_footer">
+      .psych:o:lectro.
+    </footer>
   </div>
-
-  <footer class="blur_footer">
-    .psych:o:lectro.
-  </footer>
-
   <!-- the following script is only for development phase and has to be removed upon production stage -->
   <!--<script type='text/javascript' id="__bs_script__">//<![CDATA[
       document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.2.10.1.js'><\/script>".replace("HOST", location.hostname));
