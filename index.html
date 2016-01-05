@@ -48,22 +48,7 @@
   
   <link rel="home" href="index.html">
   <link rel="stylesheet" type="text/css" href="css/style.css">
-
-  <script>
-  function playAudio() {
-    var myAudio = document.getElementById("mp3");
-    if( myAudio.paused ) {
-      myAudio.play();
-      document.getElementById("audioButton").style.backgroundImage = "url(img/pause.svg)";
-      myAudio.addEventListener('ended', function() {
-        document.getElementById("audioButton").style.backgroundImage = "url(img/play.svg)";
-      });
-    } else {
-      document.getElementById("audioButton").style.backgroundImage = "url(img/play.svg)";
-      myAudio.pause();
-    }
-  }
-  </script>
+  <script type="text/javascript" src="js/main.js"></script>
 
 </head>
 
