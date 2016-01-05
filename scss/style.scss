@@ -161,7 +161,7 @@ footer {
           border: none;
           display: block;
           vertical-align: middle;
-          @include background_url('../img/play-button.png');
+          @include background_url('../img/play.svg');
           background-size: 7.5vh 7.5vh;          
         }
       }
