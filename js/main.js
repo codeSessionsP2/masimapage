@@ -5,6 +5,7 @@ function playAudio() {
         document.getElementById("audioButton").style.backgroundImage = "url(img/pause.svg)";
         myAudio.addEventListener('ended', function() {
             document.getElementById("audioButton").style.backgroundImage = "url(img/play.svg)";
+            myAudio.pause();
         });
     } else {
         document.getElementById("audioButton").style.backgroundImage = "url(img/play.svg)";
