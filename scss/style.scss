@@ -1,5 +1,9 @@
 @import "mixins";
 
+@include font-face('Ruslan Display', url("../fonts/Ruslan_Display/RuslanDisplay.ttf"));
+
+/* fix browser defaults */
+*{margin:0px;padding:0px;}
 
 html {
   -webkit-text-size-adjust: 100%;
@@ -20,7 +24,6 @@ body {
   height: 100vh;
 }
 
-
 hr {
   width: 50%;
   border: 0;
@@ -35,14 +38,12 @@ p {
   vertical-align: middle;
 }
 
-
 a {
   color: white;
   /* unvisited link */
   &:link {
     color: black;
     text-decoration: none;
-    z-index:10;
   }
 
   /* visited link */
@@ -61,6 +62,7 @@ a {
   &:active {
     color: transparent;
     text-decoration: none;
+    outline: none;
   }
 
   /* Remove moz dashed rect */
@@ -74,39 +76,44 @@ a {
   select::-moz-focus-inner,
   input[type="file"] > input[type="button"]::-moz-focus-inner {
    border: 0;
-   outline : 0;
+   outline: 0;
   }  
 }
 
+/* Remove moz dashed rect */
+button::-moz-focus-inner {
+  border: 0;
+}
+
+/* Vertical center all in main */
+.main {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  overflow:hidden;
+}
 
 header {
   h1 {
-    font-family: 'Ruslan Display', cursive;
+    font-family: 'Ruslan Display';
     font-size: 7vh;
     font-weight: normal;
     @include webkit_reset();
   }
-  span {
-      font-family: 'Architects Daughter', cursive;
-      font-size: 8.5vh;
-      letter-spacing: 0.625vh;
-      margin-left: 0.75vh;
-      padding-top: 0.75vh;
-      vertical-align: middle;
-    }
   
-  z-index: 10;
   height: 7vh;
 }
 
 footer {
-  font-family: 'Ruslan Display', cursive;
+  font-family: 'Ruslan Display';
   font-size: 3vh;
-  z-index: 10;
 }
 
 .content {
-  font-family: 'Orbitron', cursive;
   font-size: 2.0vh;
   color: #000;
 	text-align: center;
@@ -114,17 +121,11 @@ footer {
   width: 100vw;
 
   .turnaround-container {
-    perspective: 1500;
-
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: -3.5vh;
-    height: 90vw;
-    width: 90vw;
-
-    max-height: 50vh; 
-    max-width: 50vh;
-
+    display: block;
+    margin: 0 auto;
+    height: 50vh;
+    width: 50vh;
+    
     &:hover .turnaround, .hover .turnaround { 
       transform: rotateY(180deg);
     }
@@ -140,19 +141,28 @@ footer {
       transform-style: preserve-3d;
 
       .front { 
-        z-index: 2; 
-        @include logo_svg('../logo.svg')
+        @include background_url('../img/logo.svg');
       }
       .back { 
-        @include logo_svg('../logo2.svg')
+        @include background_url('../img/spot.svg');
         transform: rotateY(180deg);
-        z-index: 1;
-
+        
         span {
           display: block;
           vertical-align: middle;
           line-height: normal;
           padding-top:45%;
+        }
+        
+        button {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          border: none;
+          display: block;
+          vertical-align: middle;
+          @include background_url('../img/play.svg');
+          background-size: 7.5vh 7.5vh;          
         }
       }
 
@@ -164,25 +174,25 @@ footer {
         text-align: center;
         width: 100%;
         height: 100%;
-
       }
     }
   }
 }
 
+.blur_header { 
+  @include blur_helper(0.175vh,0.125vh);
+}
 
-
-.blur_header,
-.blur_footer {
-  @include blur_helper(0.125vh,0.125vh);
+.blur_logo {
+  @include blur_helper(0.3vh,0.225vh);
 }
 
 .blur_info {
   @include blur_helper(0.1vh,0.05vh);
 }
 
-.blur_logo {
-  @include blur_helper(0.175vh,0.175vh);
+.blur_footer {
+  @include blur_helper(0.175vh,0.125vh);
 }
 
 .shadow_head {

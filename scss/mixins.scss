@@ -18,9 +18,34 @@
   -webkit-margin-end: 0;
 }
 
-@mixin logo_svg($filename) {
+@mixin background_url($filename) {
+  background-color: transparent;
   background: url($filename);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+}
+
+@mixin font-face(
+  $name, 
+  $font-files, 
+  $eot: false,
+  $weight: false,
+  $style: false
+) {
+  $iefont: unquote("#{$eot}?#iefix");
+  @font-face {
+    font-family: quote($name);
+    @if $eot {
+      src: font-url($eot);
+      $font-files: font-url($iefont) unquote("format('eot')"), $font-files; 
+    }
+    src: $font-files;
+    @if $weight {
+      font-weight: $weight;
+    }
+    @if $style {
+      font-style: $style;
+    }
+  }
 }
