@@ -114,6 +114,10 @@ footer {
     height: 50vh;
     width: 50vh; }
     .content .turnaround-container:hover .turnaround, .content .turnaround-container .hover .turnaround {
+      -webkit-transform: rotateY(180deg);
+      -moz-transform: rotateY(180deg);
+      -ms-transform: rotateY(180deg);
+      -o-transform: rotateY(180deg);
       transform: rotateY(180deg); }
     .content .turnaround-container .turnaround {
       position: relative;
@@ -134,6 +138,10 @@ footer {
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
+        -webkit-transform: rotateY(180deg);
+        -moz-transform: rotateY(180deg);
+        -ms-transform: rotateY(180deg);
+        -o-transform: rotateY(180deg);
         transform: rotateY(180deg); }
         .content .turnaround-container .turnaround .back span {
           display: block;

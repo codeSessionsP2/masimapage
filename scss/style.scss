@@ -127,6 +127,10 @@ footer {
     width: 50vh;
     
     &:hover .turnaround, .hover .turnaround { 
+      -webkit-transform: rotateY(180deg);
+      -moz-transform: rotateY(180deg);
+      -ms-transform: rotateY(180deg);
+      -o-transform: rotateY(180deg);
       transform: rotateY(180deg);
     }
 
@@ -145,6 +149,10 @@ footer {
       }
       .back { 
         @include background_url('../img/spot.svg');
+        -webkit-transform: rotateY(180deg);
+        -moz-transform: rotateY(180deg);
+        -ms-transform: rotateY(180deg);
+        -o-transform: rotateY(180deg);
         transform: rotateY(180deg);
         
         span {
