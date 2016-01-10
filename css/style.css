@@ -176,22 +176,18 @@ footer {
 
 .blur_header {
   -webkit-filter: blur(0.175vh);
-  /* ^ for Firefox */
   filter: blur(0.125vh); }
 
 .blur_logo {
   -webkit-filter: blur(0.3vh);
-  /* ^ for Firefox */
   filter: blur(0.225vh); }
 
-.blur_info {
+.blur_back {
   -webkit-filter: blur(0.1vh);
-  /* ^ for Firefox */
   filter: blur(0.05vh); }
 
 .blur_footer {
   -webkit-filter: blur(0.175vh);
-  /* ^ for Firefox */
   filter: blur(0.125vh); }
 
 .shadow_head {
