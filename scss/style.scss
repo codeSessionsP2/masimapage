@@ -142,6 +142,10 @@ footer {
 
       backface-visibility: hidden;
       transition: .5s;
+      -webkit-transform-style: preserve-3d;
+      -moz-transform-style: preserve-3d;
+      -ms-transform-style: preserve-3d;
+      -o-transform-style: preserve-3d;
       transform-style: preserve-3d;
 
       .front { 
