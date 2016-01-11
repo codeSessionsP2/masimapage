@@ -98,7 +98,7 @@ header {
     -webkit-margin-start: 0;
     -webkit-margin-end: 0; }
 
-footer {
+footer, .ticker {
   font-family: 'Ruslan Display';
   font-size: 3vh; }
 
@@ -174,6 +174,34 @@ footer {
         width: 100%;
         height: 100%; }
 
+.ticker {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+  margin-top: 5vh;
+  width: 50vh;
+  height: 3vh;
+  display: block;
+  margin: 5vh auto;
+  color: #000;
+  -webkit-text-fill-color: black;
+  background: -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(0%, #000), color-stop(50%, #fff), color-stop(100%, #000));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, #000 0%, #fff 50%, #000 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -moz-linear-gradient(left, #000 0%, #fff 50%, #000 100%);
+  /* FF3.6+ */
+  background: -ms-linear-gradient(left, #000 0%, #fff 50%, #000 100%);
+  /* IE10+ */
+  background: -o-linear-gradient(left, #000 0%, #fff 50%, #000 100%);
+  /* Opera 11.10+ */
+  background: linear-gradient(left, #000 0%, #fff 50%, #000 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#ffffff',GradientType=0 );
+  /* IE6-9 */
+  -webkit-background-clip: content-box; }
+
 .blur_header {
   -webkit-filter: blur(0.175vh);
   filter: blur(0.125vh); }
@@ -187,8 +215,12 @@ footer {
   filter: blur(0.05vh); }
 
 .blur_footer {
-  -webkit-filter: blur(0.175vh);
-  filter: blur(0.125vh); }
+  -webkit-filter: blur(0.125vh);
+  filter: blur(0.1vh); }
+
+.blur_ticker {
+  -webkit-filter: blur(0.075vh);
+  filter: blur(0.1vh); }
 
 .shadow_head {
   text-shadow: 0 0 1vh #fff, 0 0 2vh #fff, 0 0 3vh #fff, 0 0 4vh #FFD700, 0 0 7vh #FFD700, 0 0 8vh #FFD700, 0 0 10vh #FFD700, 0 0 15vh #FFD700;
