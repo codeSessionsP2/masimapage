@@ -108,7 +108,7 @@ header {
   height: 7vh;
 }
 
-footer, .ticker {
+footer {
   font-family: 'Ruslan Display';
   font-size: 3vh;
 }
@@ -191,26 +191,6 @@ footer, .ticker {
   }
 }
 
-.ticker {
-  @include webkit_reset();
-  margin-top: 5vh;
-  width: 50vh;
-  height: 3vh;
-  display: block;
-  margin: 5vh auto;
-  
-  color: #000;
-  -webkit-text-fill-color: black;
-  background: -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(0%,#000), color-stop(50%,#fff), color-stop(100%,#000) ); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left, #000 0%, #fff 50%, #000 100%); /* Chrome10+,Safari5.1+ */
-  background: -moz-linear-gradient(left, #000 0%, #fff 50%, #000 100%); /* FF3.6+ */
-  background: -ms-linear-gradient(left, #000 0%, #fff 50%, #000 100%); /* IE10+ */
-  background: -o-linear-gradient(left, #000 0%, #fff 50%, #000 100%); /* Opera 11.10+ */
-  background: linear-gradient(left, #000 0%, #fff 50%, #000 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
-  -webkit-background-clip: content-box;
-}
-
 .blur_header { 
   @include blur_helper(0.175vh,0.125vh);
 }
@@ -224,11 +204,7 @@ footer, .ticker {
 }
 
 .blur_footer {
-  @include blur_helper(0.125vh,0.1vh);
-}
-
-.blur_ticker {
-  @include blur_helper(0.075vh,0.1vh);
+  @include blur_helper(0.175vh,0.125vh);
 }
 
 .shadow_head {
