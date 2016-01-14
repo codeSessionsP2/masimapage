@@ -123,7 +123,6 @@ footer, .ticker {
       position: relative;
       width: 100%;
       height: 100%;
-      backface-visibility: hidden;
       transition: .5s;
       -webkit-transform-style: preserve-3d;
       -moz-transform-style: preserve-3d;
@@ -135,7 +134,8 @@ footer, .ticker {
         background: url("../img/logo.svg");
         background-repeat: no-repeat;
         background-position: center;
-        background-size: contain; }
+        background-size: contain;
+        backface-visibility: hidden; }
       .content .turnaround-container .turnaround .back {
         background-color: transparent;
         background: url("../img/spot.svg");
