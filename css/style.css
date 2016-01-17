@@ -43,10 +43,6 @@ p {
 
 a {
   color: white;
-  /* unvisited link */
-  /* visited link */
-  /* mouse over link */
-  /* selected link */
   /* Remove moz dashed rect */ }
   a:link {
     color: black;
@@ -97,6 +93,18 @@ header {
     -webkit-margin-after: 0;
     -webkit-margin-start: 0;
     -webkit-margin-end: 0; }
+
+header a, footer a {
+  color: white; }
+  header a:link, footer a:link {
+    color: white;
+    text-decoration: none; }
+  header a:visited, footer a:visited {
+    color: white;
+    text-decoration: none; }
+  header a:hover, footer a:hover {
+    color: lightgrey;
+    text-decoration: none; }
 
 footer, .ticker {
   font-family: 'Ruslan Display';
