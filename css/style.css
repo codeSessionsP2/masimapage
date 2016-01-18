@@ -1,4 +1,8 @@
 @font-face {
+  font-family: "Orbitron";
+  src: url("../fonts/Orbitron/Orbitron-Regular.ttf"); }
+
+@font-face {
   font-family: "Ruslan Display";
   src: url("../fonts/Ruslan_Display/RuslanDisplay.ttf"); }
 
@@ -111,6 +115,7 @@ footer, .ticker {
   font-size: 3vh; }
 
 .content {
+  font-family: 'Orbitron';
   font-size: 2.0vh;
   color: #000;
   text-align: center;
