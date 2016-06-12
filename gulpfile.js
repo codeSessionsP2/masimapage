@@ -96,11 +96,11 @@ gulp.task('browser-sync', function() {
 });
 
 /* Watch scss, js and html files, doing different things with each. */
-gulp.task('default', ['sass', 'browser-sync', 'scripts', 'build'], function () {
+gulp.task('default', ['sass', 'scripts', 'build', 'browser-sync'], function () {
     /* Watch scss, run the sass task on change. */
-    gulp.watch([srcDir + '/scss/*.scss', srcDir + '/scss/**/*.scss'], ['sass'])
+    gulp.watch([srcDir + '/scss/*.scss'], ['sass'])
     /* Watch app.js file, run the scripts task on change. */
-    gulp.watch([srcDir + '/js/app.js'], ['scripts'])
+    gulp.watch([srcDir + '/js/*.js'], ['scripts'])
     /* Watch .html files, run the bs-reload task on change. */
     gulp.watch([srcDir + '/*.html'], ['build', 'bs-reload']);
 });
