@@ -32,7 +32,7 @@ function cpSourceDir(folderName) {
 }
 
 /* Copies folders & files from src- to build-dir */
-gulp.task('build', function() {
+gulp.task('build', ['sass', 'scripts'], function() {
   cpSourceDir('img');
   cpSourceDir('fonts');
   return gulp.src([
@@ -52,9 +52,7 @@ gulp.task('clean', function() {
 gulp.task('scripts', function() {
   return gulp.src([
     /* Add your JS files here, they will be combined in this order */
-    srcDir + '/js/vendor/jquery-1.11.1.js',
-    srcDir + '/js/app.js',
-    srcDir + '/js/main.js'
+    srcDir + '/js/*.js'
     ])
     .pipe(concat('main.js'))
     .pipe(uglify())
@@ -76,12 +74,12 @@ gulp.task('sass', function () {
 });
 
 /* Reload task */
-gulp.task('bs-reload', function () {
+gulp.task('bs-reload', ['build'], function () {
     browserSync.reload();
 });
 
 /* Prepare Browser-sync for localhost */
-gulp.task('browser-sync', function() {
+gulp.task('browser-sync', ['build'], function() {
     browserSync.init([srcDir + '/css/*.css', srcDir + '/js/*.js'], {
         /*
         I like to use a vhost, WAMP guide: https://www.kristengrote.com/blog/articles/how-to-set-up-virtual-hosts-using-wamp, XAMP guide: http://sawmac.com/xampp/virtualhosts/
