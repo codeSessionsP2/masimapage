@@ -24,7 +24,7 @@ npm install --global gulp
 
 To install all dependencies for the *gulpfile.js* change to project directory and execute:
 ```
-npm install gulp gulp-util gulp-sass gulp-uglify gulp-rename gulp-minify-css gulp-notify gulp-concat gulp-plumber browser-sync node-neat --save-dev
+npm install gulp gulp-util gulp-sass gulp-uglify gulp-rename gulp-minify-css gulp-notify gulp-concat gulp-plumber browser-sync node-neat gulp-clean --save-dev
 ```
 
 ## Running

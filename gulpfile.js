@@ -1,22 +1,13 @@
 /*
-Gulpfile.js file for the tutorial:
-Using Gulp, SASS and Browser-Sync for your front end web development - DESIGNfromWITHIN
-http://designfromwithin.com/blog/gulp-sass-browser-sync-front-end-dev
-
-Steps:
-
-1. Install gulp globally:
-npm install --global gulp
-
-2. Type the following after navigating in your project folder:
-npm install gulp gulp-util gulp-sass gulp-uglify gulp-rename gulp-minify-css gulp-notify gulp-concat gulp-plumber browser-sync --save-dev
-
-3. Move this file in your project folder
-
-4. Setup your vhosts or just use static server (see 'Prepare Browser-sync for localhost' below)
-
-5. Type 'Gulp' and ster developing
+Gulpfile.js file for masima page.
+How to use it review the README.md
 */
+
+/* Custom source folder -> watched by gulp */
+var srcDir = 'src';
+
+/* Custom build folder -> used for preview */
+var buildDir = 'build';
 
 /* Needed gulp config */
 var gulp = require('gulp');  
@@ -29,33 +20,57 @@ var concat = require('gulp-concat');
 var plumber = require('gulp-plumber');
 var browserSync = require('browser-sync');
 var neat = require('node-neat');
+var clean = require('gulp-clean');
 var reload = browserSync.reload;
+
+/* Helper function copying src folders recrusively to build dir*/
+function cpSourceDir(folderName) {
+  return gulp.src(srcDir + '/' + folderName + '/**/*.*', {
+    base: srcDir + '/' + folderName
+  })
+  .pipe(gulp.dest(buildDir + '/' + folderName));
+}
+
+/* Copies folders & files from src- to build-dir */
+gulp.task('build', function() {
+  cpSourceDir('img');
+  cpSourceDir('fonts');
+  return gulp.src([
+   srcDir + '/index.html',
+   srcDir + '/budapest.mp3'
+  ])
+  .pipe(gulp.dest(buildDir + '/'));
+});
+
+/* Removes the build directory */
+gulp.task('clean', function() {
+  	return gulp.src(buildDir, {read: false})
+		.pipe(clean());
+});
 
 /* Scripts task */
 gulp.task('scripts', function() {
   return gulp.src([
     /* Add your JS files here, they will be combined in this order */
-    'js/vendor/jquery-1.11.1.js',
-    'js/app.js'
+    srcDir + '/js/vendor/jquery-1.11.1.js',
+    srcDir + '/js/app.js',
+    srcDir + '/js/main.js'
     ])
     .pipe(concat('main.js'))
-    .pipe(gulp.dest('js'))
-    .pipe(rename({suffix: '.min'}))
     .pipe(uglify())
-    .pipe(gulp.dest('js'));
+    .pipe(gulp.dest(buildDir + '/js'));
 });
 
 /* Sass task */
 gulp.task('sass', function () {  
-    gulp.src('scss/style.scss')
+    gulp.src(srcDir + '/scss/style.scss')
     .pipe(plumber())
     .pipe(sass({
         includePaths: ['scss'].concat(neat)
     }))
-    .pipe(gulp.dest('css'))
-    .pipe(rename({suffix: '.min'}))
+    .pipe(gulp.dest(srcDir + '/css'))
     .pipe(minifycss())
-    .pipe(gulp.dest('css'))
+    .pipe(gulp.dest(buildDir + '/css'))
     /* Reload the browser CSS after every change */
     .pipe(reload({stream:true}));
 });
@@ -67,7 +82,7 @@ gulp.task('bs-reload', function () {
 
 /* Prepare Browser-sync for localhost */
 gulp.task('browser-sync', function() {
-    browserSync.init(['css/*.css', 'js/*.js'], {
+    browserSync.init([srcDir + '/css/*.css', srcDir + '/js/*.js'], {
         /*
         I like to use a vhost, WAMP guide: https://www.kristengrote.com/blog/articles/how-to-set-up-virtual-hosts-using-wamp, XAMP guide: http://sawmac.com/xampp/virtualhosts/
         */
@@ -75,18 +90,17 @@ gulp.task('browser-sync', function() {
         /* For a static server you would use this: */
         
         server: {
-            baseDir: './'
+            baseDir: './' + buildDir
         }
-        
     });
 });
 
 /* Watch scss, js and html files, doing different things with each. */
-gulp.task('default', ['sass', 'browser-sync'], function () {
+gulp.task('default', ['sass', 'browser-sync', 'scripts', 'build'], function () {
     /* Watch scss, run the sass task on change. */
-    gulp.watch(['scss/*.scss', 'scss/**/*.scss'], ['sass'])
+    gulp.watch([srcDir + '/scss/*.scss', srcDir + '/scss/**/*.scss'], ['sass'])
     /* Watch app.js file, run the scripts task on change. */
-    gulp.watch(['js/app.js'], ['scripts'])
+    gulp.watch([srcDir + '/js/app.js'], ['scripts'])
     /* Watch .html files, run the bs-reload task on change. */
-    gulp.watch(['*.html'], ['bs-reload']);
+    gulp.watch([srcDir + '/*.html'], ['build', 'bs-reload']);
 });
