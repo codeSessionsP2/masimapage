@@ -1,0 +1,33 @@
+{
+  "name": "masima-rocks",
+  "version": "0.0.1",
+  "description": "the masima landing-page",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": { 
+    "gulp": "*",
+    "gulp-sass": "^0.7.2",
+    "gulp-notify": "*",
+    "gulp-rename": "^1.2.0",
+    "gulp-uglify": "^0.3.1",
+    "gulp-minify-css": "*",
+    "gulp-concat": "*",
+    "gulp-plumber": "*",
+    "gulp-clean": "*",
+    "browser-sync": "*",
+    "node-neat": "*"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mxklb/masimapage.git"
+  },
+  "author": "xmklb",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mxklb/masimapage/issues"
+  },
+  "homepage": "https://github.com/mxklb/masimapage#readme"
+}
