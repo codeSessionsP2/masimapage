@@ -7,7 +7,6 @@
 
 @mixin blur_helper( $blur_webkit, $blur_firefox) {
 	  -webkit-filter: blur($blur_webkit);  
-  	/* ^ for Firefox */
   	filter: blur($blur_firefox);
 }
 

@@ -108,7 +108,7 @@ header {
   height: 7vh;
 }
 
-footer {
+footer, .ticker {
   font-family: 'Ruslan Display';
   font-size: 3vh;
 }
@@ -127,6 +127,10 @@ footer {
     width: 50vh;
     
     &:hover .turnaround, .hover .turnaround { 
+      -webkit-transform: rotateY(180deg);
+      -moz-transform: rotateY(180deg);
+      -ms-transform: rotateY(180deg);
+      -o-transform: rotateY(180deg);
       transform: rotateY(180deg);
     }
 
@@ -138,6 +142,10 @@ footer {
 
       backface-visibility: hidden;
       transition: .5s;
+      -webkit-transform-style: preserve-3d;
+      -moz-transform-style: preserve-3d;
+      -ms-transform-style: preserve-3d;
+      -o-transform-style: preserve-3d;
       transform-style: preserve-3d;
 
       .front { 
@@ -145,6 +153,10 @@ footer {
       }
       .back { 
         @include background_url('../img/spot.svg');
+        -webkit-transform: rotateY(180deg);
+        -moz-transform: rotateY(180deg);
+        -ms-transform: rotateY(180deg);
+        -o-transform: rotateY(180deg);
         transform: rotateY(180deg);
         
         span {
@@ -179,6 +191,26 @@ footer {
   }
 }
 
+.ticker {
+  @include webkit_reset();
+  margin-top: 5vh;
+  width: 50vh;
+  height: 3vh;
+  display: block;
+  margin: 5vh auto;
+  
+  color: #000;
+  -webkit-text-fill-color: black;
+  background: -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(0%,#000), color-stop(50%,#fff), color-stop(100%,#000) ); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, #000 0%, #fff 50%, #000 100%); /* Chrome10+,Safari5.1+ */
+  background: -moz-linear-gradient(left, #000 0%, #fff 50%, #000 100%); /* FF3.6+ */
+  background: -ms-linear-gradient(left, #000 0%, #fff 50%, #000 100%); /* IE10+ */
+  background: -o-linear-gradient(left, #000 0%, #fff 50%, #000 100%); /* Opera 11.10+ */
+  background: linear-gradient(left, #000 0%, #fff 50%, #000 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+  -webkit-background-clip: content-box;
+}
+
 .blur_header { 
   @include blur_helper(0.175vh,0.125vh);
 }
@@ -187,12 +219,16 @@ footer {
   @include blur_helper(0.3vh,0.225vh);
 }
 
-.blur_info {
+.blur_back {
   @include blur_helper(0.1vh,0.05vh);
 }
 
 .blur_footer {
-  @include blur_helper(0.175vh,0.125vh);
+  @include blur_helper(0.125vh,0.1vh);
+}
+
+.blur_ticker {
+  @include blur_helper(0.075vh,0.1vh);
 }
 
 .shadow_head {
