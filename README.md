@@ -7,6 +7,8 @@ For development workflow gulp, sass and browser-sync is used.
 
 # Build Dependencies
 
+[![devDependency Status](https://david-dm.org/mxklb/masimapage/dev-status.svg)](https://david-dm.org/mxklb/masimapage#info=devDependencies)
+
 npm >= 3.4.0
 
 For installation instructions have a look at [node.js](https://nodejs.org/en/download/)
