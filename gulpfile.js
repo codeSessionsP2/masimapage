@@ -54,8 +54,10 @@ gulp.task('scripts', function() {
     /* Add your JS files here, they will be combined in this order */
     srcDir + '/js/*.js'
     ])
-    .pipe(concat('main.js'))
+    .pipe(concat('main.hr.js'))
+    .pipe(gulp.dest(buildDir + '/js'))
     .pipe(uglify())
+    .pipe(rename('main.js'))
     .pipe(gulp.dest(buildDir + '/js'));
 });
 
@@ -66,8 +68,10 @@ gulp.task('sass', function () {
     .pipe(sass({
         includePaths: ['scss'].concat(neat)
     }))
-    .pipe(gulp.dest(srcDir + '/css'))
+    .pipe(rename('style.hr.css'))
+    .pipe(gulp.dest(buildDir + '/css'))
     .pipe(minifycss())
+    .pipe(rename('style.css'))
     .pipe(gulp.dest(buildDir + '/css'))
     /* Reload the browser CSS after every change */
     .pipe(reload({stream:true}));
@@ -81,12 +85,6 @@ gulp.task('bs-reload', ['build'], function () {
 /* Prepare Browser-sync for localhost */
 gulp.task('browser-sync', ['build'], function() {
     browserSync.init([srcDir + '/css/*.css', srcDir + '/js/*.js'], {
-        /*
-        I like to use a vhost, WAMP guide: https://www.kristengrote.com/blog/articles/how-to-set-up-virtual-hosts-using-wamp, XAMP guide: http://sawmac.com/xampp/virtualhosts/
-        */
-        /* proxy: 'masimapage.dev' */
-        /* For a static server you would use this: */
-        
         server: {
             baseDir: './' + buildDir
         }
@@ -97,7 +95,7 @@ gulp.task('browser-sync', ['build'], function() {
 gulp.task('default', ['sass', 'scripts', 'build', 'browser-sync'], function () {
     /* Watch scss, run the sass task on change. */
     gulp.watch([srcDir + '/scss/*.scss'], ['sass'])
-    /* Watch app.js file, run the scripts task on change. */
+    /* Watch js files, run the scripts task on change. */
     gulp.watch([srcDir + '/js/*.js'], ['scripts'])
     /* Watch .html files, run the bs-reload task on change. */
     gulp.watch([srcDir + '/*.html'], ['build', 'bs-reload']);
