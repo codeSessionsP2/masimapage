@@ -7,7 +7,7 @@ before_script:
 - npm install
 script: gulp build
 after_success:
-- bash ./ci-deploy.sh
+- bash ./deploy.sh
 branches:
   only: master
 env:
