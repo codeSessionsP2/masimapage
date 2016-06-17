@@ -1,7 +1,7 @@
 # A Static Landing Page
 This is the source of the static landing page [masima.rocks](http://masima.rocks).
 
-For development workflow gulp, sass and browser-sync is used. An automated deployment to gh-pages can easily be achived by using the [travis ci](https://travis-ci.org). So local development and testing is mostly automated as well as staging with gh-pages & travis.
+For development workflow gulp, sass and browser-sync is used. Rapid deployment to gh-pages can easily be achived manually using gulp or automated by the [travis ci](https://travis-ci.org). Local development and testing is mostly automated as well as gh-pages staging.
 
 # Devel Dependencies
 [![Build Status](https://travis-ci.org/mxklb/masimapage.svg?branch=master)](https://travis-ci.org/mxklb/masimapage) [![devDependency Status](https://david-dm.org/mxklb/masimapage/dev-status.svg)](https://david-dm.org/mxklb/masimapage#info=devDependencies)
@@ -35,8 +35,8 @@ Gulp builds artifacts, compiles `scss` to `css` and starts browser-sync to open 
 
 Changes within the source `html`, `js` & `scss` are watched by gulp, browser sync updates the browser ..
 
-## Staging with travis
-For automated deployment to your gh-pages branch use [travis](https://travis-ci.org). To do so 
+## Automated deployment with travis
+To automate the deployment from your master to your gh-pages branch use travis. To do so 
 
 - Create a travis-account [here](https://travis-ci.org)
 - Create a new github token for public repos from [here](https://github.com/settings/tokens)
