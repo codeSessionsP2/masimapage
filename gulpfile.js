@@ -1,6 +1,6 @@
 /*
-Gulpfile.js file for masima page.
-How to use it review the README.md
+Gulpfile.js file for masima.rocks page.
+How to use this review the README.md
 */
 
 /* Custom source folder -> watched by gulp */
@@ -10,19 +10,22 @@ var srcDir = 'src';
 var buildDir = 'build';
 
 /* Needed gulp config */
-var gulp = require('gulp');  
+var gulp = require('gulp');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var notify = require('gulp-notify');
 var minifycss = require('gulp-minify-css');
+var ghPages = require('gulp-gh-pages');
 var concat = require('gulp-concat');
 var plumber = require('gulp-plumber');
+var gitBranch = require('git-branch-name');
 var browserSync = require('browser-sync');
 var neat = require('node-neat');
 var clean = require('gulp-clean');
 var reload = browserSync.reload;
-
+var branch = 'badBranch';
+ 
 /* Helper function copying src folders recrusively to build dir*/
 function cpSourceDir(folderName) {
   return gulp.src(srcDir + '/' + folderName + '/**/*.*', {
@@ -30,6 +33,13 @@ function cpSourceDir(folderName) {
   })
   .pipe(gulp.dest(buildDir + '/' + folderName));
 }
+
+/* Initializes the var branch with current git branch */
+gulp.task('branch', function() {
+  gitBranch('./', function(err, branchName) {
+    branch = branchName;
+  });
+});
 
 /* Copies folders & files from src- to build-dir */
 gulp.task('build', ['sass', 'scripts'], function() {
@@ -44,8 +54,15 @@ gulp.task('build', ['sass', 'scripts'], function() {
 
 /* Removes the build directory */
 gulp.task('clean', function() {
-  	return gulp.src(buildDir, {read: false})
-		.pipe(clean());
+  return gulp.src(buildDir, {read: false})
+  .pipe(clean());
+});
+
+
+/* Pushes build folder content to gh-pages (current git user) */
+gulp.task('deploy', ['build', 'branch'], function() {
+  return gulp.src('./' + buildDir +'/**/*')
+    .pipe(ghPages({message: 'Manual Deployment to Github Pages (' + branch + ')'}));
 });
 
 /* Scripts task */
