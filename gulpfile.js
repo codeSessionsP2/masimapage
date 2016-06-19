@@ -15,7 +15,7 @@ var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var notify = require('gulp-notify');
-var minifycss = require('gulp-minify-css');
+var cleancss = require('gulp-clean-css');
 var ghPages = require('gulp-gh-pages');
 var concat = require('gulp-concat');
 var plumber = require('gulp-plumber');
@@ -87,7 +87,7 @@ gulp.task('sass', function () {
     }))
     .pipe(rename('style.hr.css'))
     .pipe(gulp.dest(buildDir + '/css'))
-    .pipe(minifycss())
+    .pipe(cleancss({compatibility: 'ie8'}))
     .pipe(rename('style.css'))
     .pipe(gulp.dest(buildDir + '/css'))
     /* Reload the browser CSS after every change */
