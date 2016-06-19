@@ -45,10 +45,8 @@ This will push the content of the current build directory to your gh-pages branc
 To automate the deployment from your master to your gh-pages branch use travis. To do so 
 
 - Create a travis-account [here](https://travis-ci.org)
-- Create a new github token for public repos from [here](https://github.com/settings/tokens)
-- Encrypt that token using the travis ruby gem - `gem install travis`
-  - `travis login` - make sure to be logged in
-  - `travis encrypt -r gh_user/gh_repo "GH_TOKEN=encrypted_token_here" --add` - make sure to replace *gh_user/gh_repo* with yours. The *--add* option directly puts the token into the *.travis.yml* file. 
+- Create a new github token for public repos [here](https://github.com/settings/tokens)
+- Assign a new `GH_TOKEN` variable with that token [@travis](https://docs.travis-ci.com/user/environment-variables/#Defining-Variables-in-Repository-Settings).
 - Turn on travis for this repo [here](https://travis-ci.org/profile)
 
 Now travis should build and deploy to your gh-pages branch every time you push to your master branch.
