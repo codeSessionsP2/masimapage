@@ -9,9 +9,13 @@ var srcDir = 'src';
 /* Custom build folder -> used for preview */
 var buildDir = 'build';
 
+/* Defines the mother of the CNAME */
+var mother = 'codeSessionsP2';
+
 /* Needed gulp config */
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var git = require('simple-git')('./');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var notify = require('gulp-notify');
@@ -25,14 +29,28 @@ var neat = require('node-neat');
 var clean = require('gulp-clean');
 var reload = browserSync.reload;
 var branch = 'badBranch';
+var mainline = false;
  
-/* Helper function copying src folders recrusively to build dir*/
+/* Helper function copying src folders recrusively to build dir */
 function cpSourceDir(folderName) {
   return gulp.src(srcDir + '/' + folderName + '/**/*.*', {
     base: srcDir + '/' + folderName
   })
   .pipe(gulp.dest(buildDir + '/' + folderName));
 }
+
+/* Checks if the connected repo is from mother (mainline repo) */
+gulp.task('remote', function() {
+  git.getRemotes(true, function(err, remotes) {
+    if( remotes.length == 1 ) {
+      repo = JSON.stringify(remotes[0]['refs']['push']);
+      if( repo.indexOf(mother) > -1 ) {
+        //console.log(JSON.stringify(remotes[0]['refs']['push']));
+        mainline = true;
+      }
+    }
+  })
+});
 
 /* Initializes the var branch with current git branch */
 gulp.task('branch', function() {
@@ -42,14 +60,18 @@ gulp.task('branch', function() {
 });
 
 /* Copies folders & files from src- to build-dir */
-gulp.task('build', ['sass', 'scripts'], function() {
+/* For mainline builds the CNAME file get copied */
+gulp.task('build', ['sass', 'scripts', 'remote'], function() {
+  var files = new Array();
+  files[1] = srcDir + '/index.html';
+  files[2] = srcDir + '/budapest.mp3';
+  if( mainline == true ) {
+    console.log('Mother\'s mainline build detected!');
+    files[3] = srcDir + '/CNAME';
+  }
   cpSourceDir('img');
   cpSourceDir('fonts');
-  return gulp.src([
-   srcDir + '/index.html',
-   srcDir + '/budapest.mp3'
-  ])
-  .pipe(gulp.dest(buildDir + '/'));
+  return gulp.src(files).pipe(gulp.dest(buildDir + '/'));
 });
 
 /* Removes the build directory */
@@ -57,7 +79,6 @@ gulp.task('clean', function() {
   return gulp.src(buildDir, {read: false})
   .pipe(clean());
 });
-
 
 /* Pushes build folder content to gh-pages (current git user) */
 gulp.task('deploy', ['build', 'branch'], function() {

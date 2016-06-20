@@ -19,19 +19,20 @@
     "gulp-sass": "^2.3.1",
     "gulp-uglify": "^1.5.3",
     "gulp-util": "^3.0.7",
-    "node-neat": "^1.7.2"
+    "node-neat": "^1.7.2",
+    "simple-git": "^1.38.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mxklb/masimapage.git"
+    "url": "git+https://github.com/codeSessionsP2/masimapage.git"
   },
   "author": "xmklb",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mxklb/masimapage/issues"
+    "url": "https://github.com/codeSessionsP2/masimapage/issues"
   },
-  "homepage": "https://github.com/mxklb/masimapage#readme"
+  "homepage": "https://github.com/codeSessionsP2/masimapage#readme"
 }
