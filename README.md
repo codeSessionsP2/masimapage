@@ -1,5 +1,5 @@
 # A Static Landing Page
-This is the source of the static landing page [masima.rocks](http://masima.rocks).
+This is the source of the static landing page [masima.rocks](http://masima.rocks)
 
 For development workflow gulp, sass and browser-sync is used. Rapid deployment to gh-pages can easily be achived manually by using gulp or automated with the [travis ci](https://travis-ci.org). Local development and testing is mostly automated as well as staging.
 
