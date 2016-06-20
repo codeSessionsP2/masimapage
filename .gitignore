@@ -20,9 +20,6 @@ coverage
 # node-waf configuration
 .lock-wscript
 
-# Compiled binary addons (http://nodejs.org/api/addons.html)
-build/Release
-
 # Dependency directory
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
@@ -31,3 +28,9 @@ node_modules
 .DS_Store
 
 *~
+
+# Our custom build artifacts folder
+build
+
+# The artefacts created during gulp deploy
+.publish
