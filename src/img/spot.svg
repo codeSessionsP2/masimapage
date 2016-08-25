@@ -29,9 +29,9 @@
      inkscape:window-height="760"
      id="namedview26"
      showgrid="false"
-     inkscape:zoom="0.2466702"
-     inkscape:cx="601.7156"
-     inkscape:cy="794.21124"
+     inkscape:zoom="0.27991286"
+     inkscape:cx="688.61576"
+     inkscape:cy="807.82834"
      inkscape:window-x="702"
      inkscape:window-y="277"
      inkscape:window-maximized="0"
@@ -185,6 +185,60 @@
        r="418.31653"
        gradientTransform="matrix(1.8307715,0,0,1.7921005,-114.42653,-95.847208)"
        gradientUnits="userSpaceOnUse" />
+    <filter
+       id="filter3001"
+       color-interpolation-filters="sRGB"
+       height="1"
+       width="1"
+       y="0"
+       x="0">
+      <feColorMatrix
+         id="feColorMatrix3003"
+         type="saturate"
+         values="1"
+         result="fbSourceGraphic" />
+      <feColorMatrix
+         id="feColorMatrix3005"
+         in="fbSourceGraphic"
+         values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0 " />
+    </filter>
+    <filter
+       id="filter3055"
+       inkscape:label="Fancy blur"
+       x="-0.030000000000000006"
+       y="-0.030000000000000006"
+       width="1.0600000000000001"
+       height="1.0600000000000001"
+       inkscape:menu="Blurs"
+       inkscape:menu-tooltip="Smooth colorized contour which allows desaturation and hue rotation"
+       color-interpolation-filters="sRGB">
+      <feColorMatrix
+         id="feColorMatrix3057"
+         type="saturate"
+         values="1"
+         result="fbSourceGraphic" />
+      <feColorMatrix
+         id="feColorMatrix3059"
+         in="fbSourceGraphic"
+         values="-1 0 0 0 1 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0 "
+         result="fbSourceGraphic" />
+      <feColorMatrix
+         result="fbSourceGraphicAlpha"
+         in="fbSourceGraphic"
+         values="0 0 0 -1 0 0 0 0 -1 0 0 0 0 -1 0 0 0 0 1 0"
+         id="feColorMatrix3071" />
+      <feGaussianBlur
+         id="feGaussianBlur3073"
+         stdDeviation="11"
+         result="result1"
+         in="fbSourceGraphic" />
+      <feComposite
+         id="feComposite3075"
+         in2="result1"
+         operator="arithmetic"
+         k2="0.58568329718004364"
+         in="result1" />
+    </filter>
   </defs>
   <metadata
      id="metadata7">
@@ -194,7 +248,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -210,4 +264,63 @@
      style="fill:url(#radialGradient3796);fill-opacity:1.0;stroke:none;stroke-width:1.00019478999999989;marker-start:none;marker-mid:none"
      id="path2987"
      d="m 1531.6841,749.92237 a 765.84209,749.66538 0 0 1 -1531.684055,0 765.84209,749.66538 0 1 1 1531.684055,0 z" />
+  <g
+     id="g3028"
+     transform="matrix(1.6824715,0,0,1.6824715,-74.544616,-86.398385)"
+     style="filter:url(#filter3055)">
+    <g
+       transform="translate(199.49999,200.00001)"
+       style="filter:url(#filter3001)"
+       id="g2992">
+      <g
+         style="fill:#000000;fill-opacity:1"
+         id="g7">
+        <rect
+           style="fill:#000000;fill-opacity:1"
+           id="rect9"
+           y="73.699997"
+           x="397.39999"
+           height="447.89999"
+           width="124.7" />
+        <rect
+           style="fill:#000000;fill-opacity:1"
+           id="rect11"
+           y="73.699997"
+           x="235.8"
+           height="447.89999"
+           width="124.7" />
+        <rect
+           style="fill:#000000;fill-opacity:1"
+           id="rect13"
+           y="73.699997"
+           x="74.199997"
+           height="447.89999"
+           width="124.7" />
+      </g>
+      <polygon
+         style="fill:#000000;fill-opacity:1"
+         id="polygon15"
+         points="595.8,0 0.5,0 0.5,496.1 37.4,496.1 37.4,36.9 558.9,36.9 558.9,496.1 595.8,496.1 " />
+      <g
+         style="fill:#000000;fill-opacity:1"
+         id="g17">
+        <rect
+           style="fill:#000000;fill-opacity:1"
+           id="rect19"
+           y="558.40002"
+           x="99.699997"
+           height="36.900002"
+           width="396.89999" />
+      </g>
+    </g>
+    <g
+       transform="translate(199.49999,200.00001)"
+       id="Ebene_5" />
+    <g
+       transform="translate(199.49999,200.00001)"
+       id="Ebene_6" />
+    <g
+       transform="translate(199.49999,200.00001)"
+       id="Ebene_4" />
+  </g>
 </svg>
