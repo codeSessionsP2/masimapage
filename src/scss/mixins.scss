@@ -75,6 +75,14 @@
           transform: $transforms;
 }
 
+@mixin transform-style($transforms) {
+	   -moz-transform-style: $transforms;
+	     -o-transform-style: $transforms;
+	    -ms-transform-style: $transforms;
+	-webkit-transform-style: $transforms;
+          transform-style: $transforms;
+}
+
 @mixin keyframes($animationName) {
     @-webkit-keyframes #{$animationName} {
         @content;
