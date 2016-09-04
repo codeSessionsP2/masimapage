@@ -10,6 +10,11 @@
   	filter: blur($blur_firefox);
 }
 
+@mixin backface-visibility($visibility) {
+	  -webkit-backface-visibility: $visibility; /* Chrome, Safari, Opera */
+    backface-visibility: $visibility;
+}
+
 @mixin webkitReset {
   -webkit-margin-before: 0;
   -webkit-margin-after: 0;

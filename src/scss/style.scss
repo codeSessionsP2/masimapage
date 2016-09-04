@@ -172,7 +172,6 @@ header {
       width: 100%;
       height: 100%;
       position: relative;
-      backface-visibility: hidden;
       @include transform-style(preserve-3d);
 
       .front { 
@@ -203,7 +202,7 @@ header {
       .back {
         position: absolute;
         top:0;
-        backface-visibility: hidden;
+        @include backface-visibility(hidden);
         text-align: center;
         width: 100%;
         height: 100%;
@@ -245,6 +244,7 @@ footer, .ticker {
     position: absolute;
     box-sizing: border-box; 
     color: black; // Hide text = background-color
+    @include backface-visibility(hidden);
   }
 
   p:hover {
@@ -253,6 +253,7 @@ footer, .ticker {
 
   // Common left & right overlay gradient
   p:after, p::after, p:before, p::before {
+    @include transform(translate3d(0, 0, 0));
     z-index: 1;
     content: '';
     position: absolute;
@@ -264,12 +265,12 @@ footer, .ticker {
   // Define left gradient
   p:after, p::after {
     left: 0vh;
-    @include linear-gradient(0deg, black 25%, rgba(255,255,255,0));
+    @include linear-gradient(0deg, black 25%, rgba(0,0,0,0));
   }
 
   // Define right gradient
   p:before, p::before {
     left: 25vh;
-    @include linear-gradient(-180deg, black 25%, rgba(255,255,255,0));
+    @include linear-gradient(-180deg, black 25%, rgba(0,0,0,0));
   }
 }
