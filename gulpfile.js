@@ -22,6 +22,7 @@ var cleancss = require('gulp-clean-css');
 var ghPages = require('gulp-gh-pages');
 var concat = require('gulp-concat');
 var plumber = require('gulp-plumber');
+var removeFiles = require('gulp-remove-files');
 var gitBranch = require('git-branch-name');
 var browserSync = require('browser-sync');
 var neat = require('node-neat');
@@ -99,10 +100,10 @@ gulp.task('scripts', function() {
 gulp.task('minify', function() {
   return gulp.src(srcDir + '/index.html')
     .pipe(rename('index.hr.html'))
+    .pipe(gulp.dest(buildDir))
     .pipe(htmlmin({
       removeComments: true,
-      collapseWhitespace: true,
-      preserveLineBreaks: true
+      collapseWhitespace: true
     }))
     .pipe(rename('index.html'))
     .pipe(gulp.dest(buildDir));
@@ -119,6 +120,14 @@ gulp.task('branch', function() {
   gitBranch('./', function(err, branchName) {
     branch = branchName;
   });
+});
+
+// Remove developemnt files for deployment (*.hr.*)
+gulp.task('release', ['build'], function () {
+  return gulp.src('./' + buildDir + '/**/*.hr.*', {
+    base: './' + buildDir
+  })
+  .pipe(removeFiles());
 });
 
 // Removes the build directory
