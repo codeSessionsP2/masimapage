@@ -8,26 +8,25 @@ var srcDir = 'src';
 var buildDir = 'build';
 
 // Define the mainline -> uses the CNAME
-var mainline = 'codeSessionsP2';
+var mainlineUser = 'codeSessionsP2';
 
-// Needed gulp config
+// Required packages
 var gulp = require('gulp');
-var sass = require('gulp-sass');
-var git = require('simple-git')('./');
-var uglify = require('gulp-uglify');
-var htmlmin = require('gulp-htmlmin');
-var rename = require('gulp-rename');
-var notify = require('gulp-notify');
-var cleancss = require('gulp-clean-css');
-var ghPages = require('gulp-gh-pages');
-var concat = require('gulp-concat');
-var plumber = require('gulp-plumber');
-var removeFiles = require('gulp-remove-files');
-var gitBranch = require('git-branch-name');
-var browserSync = require('browser-sync');
-var neat = require('node-neat');
 var clean = require('gulp-clean');
-var reload = browserSync.reload;
+var cleanCss = require('gulp-clean-css');
+var concat = require('gulp-concat');
+var ghPages = require('gulp-gh-pages');
+var htmlMin = require('gulp-htmlmin');
+var plumber = require('gulp-plumber');
+var rmFiles = require('gulp-remove-files');
+var rename = require('gulp-rename');
+var sass = require('gulp-sass');
+var uglify = require('gulp-uglify');
+var neat = require('node-neat');
+var git = require('simple-git')('./');
+var browserSync = require('browser-sync');
+
+// Initial deployment vars
 var branch = 'badBranch';
 var mainline = false;
 
@@ -43,7 +42,6 @@ function cpSourceDir(folderName) {
 // For mainline builds the CNAME file get copied
 gulp.task('build', ['remote', 'sass', 'scripts', 'minify'], function() {
   var files = new Array();
-  //files[1] = srcDir + '/index.html';
   files[1] = srcDir + '/budapest.mp3';
   if( mainline == true ) {
     console.log('Mainline build detected!');
@@ -54,12 +52,12 @@ gulp.task('build', ['remote', 'sass', 'scripts', 'minify'], function() {
   return gulp.src(files).pipe(gulp.dest(buildDir + '/'));
 });
 
-// Checks if the connected repo is the mainline
+// Checks if the connected repo is from mainlineUser
 gulp.task('remote', function() {
   git.getRemotes(true, function(err, remotes) {
     if( remotes.length == 1 ) {
       repo = JSON.stringify(remotes[0]['refs']['push']);
-      if( repo.indexOf(mainline) > -1 ) {
+      if( repo.indexOf(mainlineUser) > -1 ) {
         //console.log(JSON.stringify(remotes[0]['refs']['push']));
         mainline = true;
       }
@@ -76,11 +74,11 @@ gulp.task('sass', function () {
     }))
     .pipe(rename('style.hr.css'))
     .pipe(gulp.dest(buildDir + '/css'))
-    .pipe(cleancss({compatibility: 'ie8'}))
+    .pipe(cleanCss({compatibility: 'ie8'}))
     .pipe(rename('style.css'))
     .pipe(gulp.dest(buildDir + '/css'))
     // Reload the browser CSS after every change
-    .pipe(reload({stream:true}));
+    .pipe(browserSync.reload({stream:true}));
 });
 
 // Concatinate js files & minifies  
@@ -96,12 +94,12 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest(buildDir + '/js'));
 });
 
-// Shrinks html files into src dir
+// Shrink index.html file into build dir
 gulp.task('minify', function() {
   return gulp.src(srcDir + '/index.html')
     .pipe(rename('index.hr.html'))
     .pipe(gulp.dest(buildDir))
-    .pipe(htmlmin({
+    .pipe(htmlMin({
       removeComments: true,
       collapseWhitespace: true
     }))
@@ -117,8 +115,8 @@ gulp.task('deploy', ['build', 'branch'], function() {
 
 // Initializes the var branch with current git branch
 gulp.task('branch', function() {
-  gitBranch('./', function(err, branchName) {
-    branch = branchName;
+  return git.branch(function(err, branchSummary) {
+    branch = branchSummary.current;
   });
 });
 
@@ -127,7 +125,7 @@ gulp.task('release', ['build'], function () {
   return gulp.src('./' + buildDir + '/**/*.hr.*', {
     base: './' + buildDir
   })
-  .pipe(removeFiles());
+  .pipe(rmFiles());
 });
 
 // Removes the build directory
