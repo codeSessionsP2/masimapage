@@ -62,15 +62,15 @@
 
 <body onload="onLoad()">
   <div class="main">
+    
     <header class='blurHeader'>
       <h1>.masima.</h1>
     </header>
 
     <div class="content">
-    <div class="turnaround-container" ontouchstart="this.classList.toggle('hover')" onclick="onTurnaroundContainerClicked()">
+      <div class="turnaround-container" ontouchstart="this.classList.toggle('hover')" onclick="onTurnaroundContainerClicked()">
         <div class="turnaround" id="turnaroundLogo">
-          <div class="front zoomIn blurLogo" id="logo">
-          </div>
+          <div class="front zoomIn blurLogo" id="logo"></div>
           <div class="back blurBack">
             <button id="audioButton" type="button" ></button>
             <audio id="mp3">
@@ -90,6 +90,7 @@
     <div class="ticker blurTicker">
       <p id="tickerText">.. consuming, grasping, changing, not at all ..</p>
     </div> 
+  
   </div>
   <!-- the following script is only for development phase and has to be removed upon production stage -->
   <!--<script type='text/javascript' id="__bs_script__">//<![CDATA[

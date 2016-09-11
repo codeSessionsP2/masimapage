@@ -41,9 +41,9 @@ function cpSourceDir(folderName) {
 // Copies folders & files from src- to build dir
 // For mainline builds the CNAME file get copied
 gulp.task('build', ['remote', 'sass', 'scripts', 'minify'], function() {
-  var files = new Array();
+  var files = [];
   files[1] = srcDir + '/budapest.mp3';
-  if( mainline == true ) {
+  if( mainline === true ) {
     console.log('Mainline build detected!');
     files[2] = srcDir + '/CNAME';
   }
@@ -54,31 +54,30 @@ gulp.task('build', ['remote', 'sass', 'scripts', 'minify'], function() {
 
 // Checks if the connected repo is from mainlineUser
 gulp.task('remote', function() {
-  git.getRemotes(true, function(err, remotes) {
+  return git.getRemotes(true, function(err, remotes) {
     if( remotes.length == 1 ) {
-      repo = JSON.stringify(remotes[0]['refs']['push']);
+      repo = JSON.stringify(remotes[0].refs.push);
       if( repo.indexOf(mainlineUser) > -1 ) {
-        //console.log(JSON.stringify(remotes[0]['refs']['push']));
         mainline = true;
       }
     }
-  })
+  });
 });
 
 // Compiles scss to css & minifies
 gulp.task('sass', function () {  
-    return gulp.src(srcDir + '/scss/style.scss')
-    .pipe(plumber())
-    .pipe(sass({
-        includePaths: ['scss'].concat(neat)
-    }))
-    .pipe(rename('style.hr.css'))
-    .pipe(gulp.dest(buildDir + '/css'))
-    .pipe(cleanCss({compatibility: 'ie8'}))
-    .pipe(rename('style.css'))
-    .pipe(gulp.dest(buildDir + '/css'))
-    // Reload the browser CSS after every change
-    .pipe(browserSync.reload({stream:true}));
+  return gulp.src(srcDir + '/scss/style.scss')
+  .pipe(plumber())
+  .pipe(sass({
+      includePaths: ['scss'].concat(neat)
+  }))
+  .pipe(rename('style.hr.css'))
+  .pipe(gulp.dest(buildDir + '/css'))
+  .pipe(cleanCss({compatibility: 'ie8'}))
+  .pipe(rename('style.css'))
+  .pipe(gulp.dest(buildDir + '/css'))
+  // Reload the browser CSS after every change
+  .pipe(browserSync.reload({stream:true}));
 });
 
 // Concatinate js files & minifies  
@@ -86,31 +85,33 @@ gulp.task('scripts', function() {
   return gulp.src([
     // Add js files here, they will be combined in this order
     srcDir + '/js/*.js'
-    ])
-    .pipe(concat('main.hr.js'))
-    .pipe(gulp.dest(buildDir + '/js'))
-    .pipe(uglify())
-    .pipe(rename('main.js'))
-    .pipe(gulp.dest(buildDir + '/js'));
+  ])
+  .pipe(concat('main.hr.js'))
+  .pipe(gulp.dest(buildDir + '/js'))
+  .pipe(uglify())
+  .pipe(rename('main.js'))
+  .pipe(gulp.dest(buildDir + '/js'));
 });
 
 // Shrink index.html file into build dir
 gulp.task('minify', function() {
   return gulp.src(srcDir + '/index.html')
-    .pipe(rename('index.hr.html'))
-    .pipe(gulp.dest(buildDir))
-    .pipe(htmlMin({
-      removeComments: true,
-      collapseWhitespace: true
-    }))
-    .pipe(rename('index.html'))
-    .pipe(gulp.dest(buildDir));
+  .pipe(rename('index.hr.html'))
+  .pipe(gulp.dest(buildDir))
+  .pipe(htmlMin({
+    removeComments: true,
+    collapseWhitespace: true
+  }))
+  .pipe(rename('index.html'))
+  .pipe(gulp.dest(buildDir));
 });
 
 // Push build folder content to gh-pages (current git user)
 gulp.task('deploy', ['build', 'branch'], function() {
   return gulp.src('./' + buildDir +'/**/*')
-    .pipe(ghPages({message: 'Manual Deployment to Github Pages (' + branch + ')'}));
+  .pipe(ghPages({
+    message: 'Manual Deployment to Github Pages (' + branch + ')'
+  }));
 });
 
 // Initializes the var branch with current git branch
@@ -120,7 +121,7 @@ gulp.task('branch', function() {
   });
 });
 
-// Remove developemnt files for deployment (*.hr.*)
+// Remove development files for deployment (*.hr.*)
 gulp.task('release', ['build'], function () {
   return gulp.src('./' + buildDir + '/**/*.hr.*', {
     base: './' + buildDir
@@ -142,18 +143,16 @@ gulp.task('bs-reload', ['build'], function () {
 // Prepare Browser-sync for localhost
 gulp.task('browser-sync', ['build'], function() {
   browserSync.init([srcDir + '/css/*.css', srcDir + '/js/*.js'], {
-    server: {
-      baseDir: './' + buildDir
-      }
+    server: { baseDir: './' + buildDir }
   });
 });
 
 // Watch scss, js and html files, doing different things with each
 gulp.task('default', ['browser-sync'], function () {
-    // Watch scss, run the sass task on change
-    gulp.watch([srcDir + '/scss/*.scss'], ['sass'])
-    // Watch js files, run the scripts task on change
-    gulp.watch([srcDir + '/js/*.js'], ['scripts'])
-    // Watch .html files, run the bs-reload task on change
-    gulp.watch([srcDir + '/*.html'], ['bs-reload']);
+  // Watch scss, run the sass task on change
+  gulp.watch([srcDir + '/scss/*.scss'], ['sass']);
+  // Watch js files, run the scripts task on change
+  gulp.watch([srcDir + '/js/*.js'], ['scripts']);
+  // Watch .html files, run the bs-reload task on change
+  gulp.watch([srcDir + '/*.html'], ['bs-reload']);
 });
