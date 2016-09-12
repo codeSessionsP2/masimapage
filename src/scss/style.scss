@@ -2,25 +2,23 @@
 
 @include font-face('Ruslan Display', url("../fonts/Ruslan_Display/RuslanDisplay.ttf"));
 
-/* fix browser defaults */
-*{margin:0px;padding:0px;}
+// Fix browser defaults
+*{ margin:0px; padding:0px; }
 
 html {
   -webkit-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   box-sizing: border-box;
-
-  @include webkit_reset();
+  @include webkitReset();
 }
 
 body {
   font-size: 2vh;
-  color: #fff;
-  background-color: #000;
+  color: white;
+  background-color: black;
   text-align: center;
-	/*overflow: hidden;*/
-	margin: 0 0;
+  margin: 0 0;
   height: 100vh;
 }
 
@@ -28,44 +26,39 @@ hr {
   width: 50%;
   border: 0;
   height: 0.11vh;
-  @include hr_gradient();
+  @include hrGradient();
 }
 
 p {
   display: block;
   margin: 0;
   box-sizing: border-box;
-  vertical-align: middle;
 }
 
 a {
   color: white;
-  /* unvisited link */
+  // Unvisited link
   &:link {
     color: black;
     text-decoration: none;
   }
-
-  /* visited link */
+  // Visited link
   &:visited {
     color: black;
     text-decoration: none;
   }
-
-  /* mouse over link */
+  // Mouse over link
   &:hover {
     color: white;
     text-decoration: none;
   }
-
-  /* selected link */
+  // Selected link
   &:active {
     color: transparent;
     text-decoration: none;
     outline: none;
   }
-
-  /* Remove moz dashed rect */
+  // Remove moz dashed rect
   &:focus, &:active, 
   button::-moz-focus-inner,
   &::-moz-focus-inner,
@@ -75,47 +68,95 @@ a {
   input[type="submit"]::-moz-focus-inner,
   select::-moz-focus-inner,
   input[type="file"] > input[type="button"]::-moz-focus-inner {
-   border: 0;
-   outline: 0;
+    border: 0;
+    outline: 0;
   }  
 }
 
-/* Remove moz dashed rect */
+// Remove moz dashed rect
 button::-moz-focus-inner {
   border: 0;
 }
 
-/* Vertical center all in main */
+// Vertical center all in main
 .main {
   position: relative;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
+  @include transform(translateY(-50%));
   overflow:hidden;
 }
 
+// Blur effect for header (MASIMA)
+.blurHeader { 
+  @include blurHelper(0.175vh,0.125vh);
+}
+
+// Blur effect for content front (logo)
+.blurLogo {
+  @include blurHelper(0.3vh,0.225vh);
+}
+
+// Blur effect for content back (player)
+.blurBack {
+  @include blurHelper(0.1vh,0.05vh);
+}
+
+// Blur effect for footer (.psych:o:lectro.)
+.blurFooter {
+  @include blurHelper(0.125vh,0.1vh);
+}
+
+// Blur effect for ticker (marquee)
+.blurTicker {
+  @include blurHelper(0.125vh,0.1vh);
+}
+
+// The headline (MASIMA)
 header {
   h1 {
     font-family: 'Ruslan Display';
     font-size: 7vh;
     font-weight: normal;
-    @include webkit_reset();
+    @include webkitReset();
   }
-  
   height: 7vh;
 }
 
-footer, .ticker {
-  font-family: 'Ruslan Display';
-  font-size: 3vh;
+// Define zoom animations (logo)
+.zoomIn, .zoomLoop {
+  transition: 5s;
+  @include keyframes('zoomIn') {
+    0% { @include transform(scale(0.1)); }
+    100% { @include transform(scale(1.0)); }
+  }
+  @include animation('zoomIn 3.2s 1');
+}
+.zoomLoop {
+  @include keyframes('zoomInOut') {
+    0% { @include transform(scale(1.0)); }
+    50% { @include transform(scale(0.5)); }
+    100% { @include transform(scale(1.0)); }
+  }
+  @include animation('zoomInOut 3.2s infinite');
 }
 
+// Define 360deg rotation (logo) 
+.rotateY360 {
+  transition: 4.5s;
+  @include keyframes('rotateY360') {
+    0% { @include transform(rotateY(0deg)); }
+    40% { @include transform(rotateY(180deg)); } 
+    50% { @include transform(rotateY(180deg)); } 
+    90% { @include transform(rotateY(0deg)); } 
+    100% { @include transform(rotateY(0deg)); }
+  }
+  @include animation('rotateY360 3.2s infinite');
+}
+
+// The logo & player animation
 .content {
   font-size: 2.0vh;
-  color: #000;
+  color: black;
 	text-align: center;
 	display: inline-block;
   width: 100vw;
@@ -126,42 +167,21 @@ footer, .ticker {
     height: 50vh;
     width: 50vh;
     
-    &:hover .turnaround, .hover .turnaround { 
-      -webkit-transform: rotateY(180deg);
-      -moz-transform: rotateY(180deg);
-      -ms-transform: rotateY(180deg);
-      -o-transform: rotateY(180deg);
-      transform: rotateY(180deg);
-    }
-
     .turnaround {
-      position: relative;
-
       width: 100%;
       height: 100%;
-
-      backface-visibility: hidden;
-      transition: .5s;
-      -webkit-transform-style: preserve-3d;
-      -moz-transform-style: preserve-3d;
-      -ms-transform-style: preserve-3d;
-      -o-transform-style: preserve-3d;
-      transform-style: preserve-3d;
+      position: relative;
+      @include transform-style(preserve-3d);
 
       .front { 
         @include background_url('../img/logo.svg');
       }
       .back { 
         @include background_url('../img/spot.svg');
-        -webkit-transform: rotateY(180deg);
-        -moz-transform: rotateY(180deg);
-        -ms-transform: rotateY(180deg);
-        -o-transform: rotateY(180deg);
-        transform: rotateY(180deg);
+        @include transform(rotateY(180deg));
         
         span {
           display: block;
-          vertical-align: middle;
           line-height: normal;
           padding-top:45%;
         }
@@ -172,7 +192,6 @@ footer, .ticker {
           height: 100%;
           border: none;
           display: block;
-          vertical-align: middle;
           @include background_url('../img/play.svg');
           background-size: 7.5vh 7.5vh;          
         }
@@ -182,7 +201,7 @@ footer, .ticker {
       .back {
         position: absolute;
         top:0;
-        backface-visibility: hidden;
+        @include backface-visibility(hidden);
         text-align: center;
         width: 100%;
         height: 100%;
@@ -191,53 +210,66 @@ footer, .ticker {
   }
 }
 
+// The footer (.psych:o:lectro.)
+footer, .ticker {
+  font-family: 'Ruslan Display';
+  font-size: 3vh;
+}
+
+// Define ticker animation
+.tickerMove {
+  @include animation('marquee 6.4s linear infinite');
+  @include keyframes('marquee') {
+    0%   { text-indent:   50vh }
+    100% { text-indent: -120vh }
+  }
+}
+
+// The ticker
 .ticker {
-  @include webkit_reset();
+  @include webkitReset();
   margin-top: 5vh;
   width: 50vh;
   height: 3vh;
   display: block;
   margin: 5vh auto;
-  
-  color: #000;
-  -webkit-text-fill-color: black;
-  background: -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(0%,#000), color-stop(50%,#fff), color-stop(100%,#000) ); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left, #000 0%, #fff 50%, #000 100%); /* Chrome10+,Safari5.1+ */
-  background: -moz-linear-gradient(left, #000 0%, #fff 50%, #000 100%); /* FF3.6+ */
-  background: -ms-linear-gradient(left, #000 0%, #fff 50%, #000 100%); /* IE10+ */
-  background: -o-linear-gradient(left, #000 0%, #fff 50%, #000 100%); /* Opera 11.10+ */
-  background: linear-gradient(left, #000 0%, #fff 50%, #000 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
-  -webkit-background-clip: content-box;
-}
 
-.blur_header { 
-  @include blur_helper(0.175vh,0.125vh);
-}
+  // Make <p> a marquee
+  p {
+    margin: 0 auto;
+    overflow: hidden;
+    width: 50vh;
+    white-space: nowrap;
+    position: absolute;
+    box-sizing: border-box; 
+    color: black; // Hide text = background-color
+    @include backface-visibility(hidden);
+  }
 
-.blur_logo {
-  @include blur_helper(0.3vh,0.225vh);
-}
+  p:hover {
+    animation-play-state: paused;
+  }
 
-.blur_back {
-  @include blur_helper(0.1vh,0.05vh);
-}
+  // Common left & right overlay gradient
+  p:after, p::after, p:before, p::before {
+    @include transform(translate3d(0, 0, 0));
+    z-index: 1;
+    content: '';
+    position: absolute;
+    width: 25vh; 
+    height: 3vh;
+    top: 0vh;
+  }
 
-.blur_footer {
-  @include blur_helper(0.125vh,0.1vh);
-}
+  // Define left gradient
+  p:after, p::after {
+    left: 0vh;
+    @include linear-gradient(0deg, black 25%, rgba(0,0,0,0));
+  }
 
-.blur_ticker {
-  @include blur_helper(0.075vh,0.1vh);
+  // Define right gradient
+  p:before, p::before {
+    left: 25vh;
+    @include linear-gradient(-180deg, black 25%, rgba(0,0,0,0));
+  }
 }
-
-.shadow_head {
-  text-shadow: 0 0 1vh #fff, 0 0 2vh #fff, 0 0 3vh #fff, 0 0 4vh #FFD700, 0 0 7vh #FFD700, 0 0 8vh #FFD700, 0 0 10vh #FFD700, 0 0 15vh #FFD700;
-  -webkit-font-smoothing: antialiased;
-}
-
-.shadow_foot {
-  text-shadow: 0 0 0.5vh #fff, 0 0 1vh #fff, 0 0 1.5vh #fff, 0 0 2vh #FFD700, 0 0 3.5vh #FFD700, 0 0 4vh #FFD700, 0 0 5vh #FFD700, 0 0 7.5vh #FFD700;
-  -webkit-font-smoothing: antialiased;
-}
-
