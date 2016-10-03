@@ -173,8 +173,12 @@ header {
       position: relative;
       @include transform-style(preserve-3d);
 
-      .front { 
-        @include background_url('../img/logo.svg');
+      .front {
+        canvas {
+          width: 100%;
+          height: 100%;
+          @include background_url('../img/logo.svg');
+        }
       }
       .back { 
         @include background_url('../img/spot.svg');

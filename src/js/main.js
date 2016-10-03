@@ -1,15 +1,35 @@
+var delayTime = 3200;
+var noiseAnimationTimer = null;
+var tickerAnimationTimer = null;
+
 // Called after page load
 function onLoad() {
-  delayTickerAnimation(3200, true);
+  startAnimations(delayTime);
 }
 
-// Delayed start ticker
-function delayTickerAnimation(time, start) {
-  setTimeout(function() { toggleTickerAnimation(start); }, time);
+// Start noise & ticker animations
+function startAnimations(delayTime) {
+  noiseAnimationTimer = setTimeout(function() { startNoiseAnimation(true); }, delayTime*3);
+  tickerAnimationTimer = setTimeout(function() { startTickerAnimation(true); }, delayTime);
+}
+
+// Stop noise & ticker animations
+function stopAnimations() {
+  if (noiseAnimationTimer) {
+    clearTimeout(noiseAnimationTimer);
+    noiseAnimationTimer = null;
+  }
+  startNoiseAnimation(false);
+
+  if (tickerAnimationTimer) {
+    clearTimeout(tickerAnimationTimer);
+    tickerAnimationTimer = null;
+  }
+  startTickerAnimation(false);
 }
 
 // Toggle the animation of the tickerText
-function toggleTickerAnimation( start ) {
+function startTickerAnimation( start ) {
   if( start ) {
     document.getElementById("tickerText").classList.add("tickerMove");
   } else {
@@ -51,9 +71,9 @@ function toggleAudioStreamPlayback() {
 function toggleAudioUiState( audioPaused ) {
     toggleAudioPlayButtons( audioPaused );
     if( audioPaused ) {
-      delayTickerAnimation(3200, audioPaused);
+      startAnimations(delayTime);
     } else {
-      toggleTickerAnimation(audioPaused);
+      stopAnimations();
     }
     stopLogoZoomLoop( audioPaused );
     stopLogoRotation( audioPaused );
