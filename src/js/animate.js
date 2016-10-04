@@ -18,7 +18,7 @@ function initContext() {
 var requestId;
 
 // Start/Stop noise animation 
-function startNoiseAnimation(start) {
+function enableNoiseAnimation(start) {
   if (start) {
     if (!requestId) {
       drawNoiseAnimatedFrame();

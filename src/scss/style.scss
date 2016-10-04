@@ -126,18 +126,33 @@ header {
 .zoomIn, .zoomLoop {
   transition: 5s;
   @include keyframes('zoomIn') {
-    0% { @include transform(scale(0.1)); }
-    100% { @include transform(scale(1.0)); }
+    0% { @include transform(scale(.1)); }
+    100% { @include transform(scale(1)); }
   }
   @include animation('zoomIn 3.2s 1');
 }
 .zoomLoop {
   @include keyframes('zoomInOut') {
-    0% { @include transform(scale(1.0)); }
-    50% { @include transform(scale(0.5)); }
-    100% { @include transform(scale(1.0)); }
+    0% { @include transform(scale(1)); }
+    50% { @include transform(scale(.5)); }
+    100% { @include transform(scale(1)); }
   }
   @include animation('zoomInOut 3.2s infinite');
+}
+
+// Define wobble animation
+.wobble {
+  transition: 2s;
+  @include keyframes('wobble') {
+    0% { transform: translateX(0%); }
+    15% { transform: translateX(0%) rotate(.5deg); }
+    30% { transform: translateX(0%) }
+    45% { transform: translateX(0%) }
+    60% { transform: translateX(0%) rotate(-.125deg); }
+    75% { transform: translateX(0%) rotate(-.25deg); }
+    100% { transform: translateX(0%); }
+  }
+  @include animation('wobble 3.2s infinite');
 }
 
 // Define 360deg rotation (logo) 
@@ -145,9 +160,9 @@ header {
   transition: 4.5s;
   @include keyframes('rotateY360') {
     0% { @include transform(rotateY(0deg)); }
-    40% { @include transform(rotateY(180deg)); } 
-    50% { @include transform(rotateY(180deg)); } 
-    90% { @include transform(rotateY(0deg)); } 
+    40% { @include transform(rotateY(180deg)); }
+    50% { @include transform(rotateY(180deg)); }
+    90% { @include transform(rotateY(0deg)); }
     100% { @include transform(rotateY(0deg)); }
   }
   @include animation('rotateY360 3.2s infinite');

@@ -1,31 +1,19 @@
-var delayTime = 3200;
+var animationDelay = 3200;
+var flickerInterval = 500;
 var noiseAnimationTimer = null;
+var wobbleAnimationTimer = null;
 var tickerAnimationTimer = null;
 
 // Called after page load
 function onLoad() {
-  startAnimations(delayTime);
+  startAnimations(animationDelay);
 }
 
-// Start noise & ticker animations
-function startAnimations(delayTime) {
-  noiseAnimationTimer = setTimeout(function() { startNoiseAnimation(true); }, delayTime*3);
-  tickerAnimationTimer = setTimeout(function() { startTickerAnimation(true); }, delayTime);
-}
-
-// Stop noise & ticker animations
-function stopAnimations() {
-  if (noiseAnimationTimer) {
-    clearTimeout(noiseAnimationTimer);
-    noiseAnimationTimer = null;
-  }
-  startNoiseAnimation(false);
-
-  if (tickerAnimationTimer) {
-    clearTimeout(tickerAnimationTimer);
-    tickerAnimationTimer = null;
-  }
-  startTickerAnimation(false);
+// Start ticker, noise & wobble animations
+function startAnimations(animationDelay) {
+  tickerAnimationTimer = setTimeout(function() { startTickerAnimation(true); }, animationDelay);
+  wobbleAnimationTimer = setTimeout(function() { startWobbleAnimation(true); }, animationDelay);
+  noiseAnimationTimer = setTimeout(function() { startFlickerAnimation(); }, animationDelay);
 }
 
 // Toggle the animation of the tickerText
@@ -45,6 +33,61 @@ function toggleTickerVisibility( audioPaused ) {
   } else {
     document.getElementById("tickerText").style.color = "black";
   }
+}
+
+// Add the wobble class to content
+function startWobbleAnimation( start ) {
+  if( start ) {
+    document.getElementById("content").classList.add("wobble");
+  } else {
+    document.getElementById("content").classList.remove("wobble");    
+  }
+}
+
+// Start the flickering noise animation
+function startFlickerAnimation() {
+  enableNoiseAnimation(true);
+  noiseAnimationTimer = setTimeout(function() { restartFlickerAnimation(); }, Math.random()*flickerInterval);
+}
+
+// Stops and restarts flickering noise animation after random timeout
+function restartFlickerAnimation() {
+  stopNoiseAnimation();
+  noiseAnimationTimer = setTimeout(function() { startFlickerAnimation(); }, Math.random()*flickerInterval);
+}
+
+// Stop the flickering noise animation
+function stopNoiseAnimation() {
+  if (noiseAnimationTimer) {
+    clearTimeout(noiseAnimationTimer);
+    noiseAnimationTimer = null;
+  }
+  enableNoiseAnimation(false);
+}
+
+// Stop the ticker animation
+function stopTickerAnimation() {
+  if (tickerAnimationTimer) {
+    clearTimeout(tickerAnimationTimer);
+    tickerAnimationTimer = null;
+  }
+  startTickerAnimation(false);
+}
+
+// Stop the wobble animation
+function stopWobbleAnimation() {
+  if (wobbleAnimationTimer) {
+    clearTimeout(wobbleAnimationTimer);
+    wobbleAnimationTimer = null;
+  }
+  startWobbleAnimation(false);
+}
+
+// Stop noise, wobble & ticker animations
+function stopAnimations() {
+  stopNoiseAnimation();
+  stopWobbleAnimation();
+  stopTickerAnimation();
 }
 
 // Callback onClick for turnaround-container
@@ -71,7 +114,7 @@ function toggleAudioStreamPlayback() {
 function toggleAudioUiState( audioPaused ) {
     toggleAudioPlayButtons( audioPaused );
     if( audioPaused ) {
-      startAnimations(delayTime);
+      startAnimations(animationDelay);
     } else {
       stopAnimations();
     }
