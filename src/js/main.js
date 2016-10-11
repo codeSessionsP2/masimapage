@@ -1,8 +1,8 @@
 var animationDelay = 3200;
 var flickerInterval = 500;
-var noiseAnimationTimer = null;
-var wobbleAnimationTimer = null;
 var tickerAnimationTimer = null;
+var wobbleAnimationTimer = null;
+var flickerAnimationTimer = null;
 
 // Clears the given timer
 function clearTimer(timer) {
@@ -36,22 +36,22 @@ function onLoad() {
 
 // Start ticker, noise & wobble animations
 function startAnimations(animationDelay) {
-  tickerAnimationTimer = setTimeout(function() { startTickerAnimation(true); }, animationDelay);
-  wobbleAnimationTimer = setTimeout(function() { startWobbleAnimation(true); }, animationDelay);
-  noiseAnimationTimer = setTimeout(function() { startFlickerAnimation(); }, animationDelay);
+  tickerAnimationTimer = setTimeout(function () { enableTickerAnimation(true); }, animationDelay);
+  wobbleAnimationTimer = setTimeout(function () { enableWobbleAnimation(true); }, animationDelay);
+  flickerAnimationTimer = setTimeout(function () { startFlickerAnimation(); }, animationDelay);
 }
 
 // Toggle the animation of the tickerText
-function startTickerAnimation(start) {
+function enableTickerAnimation(start) {
   addClassToElement("tickerMove", "tickerText", start);
-  toggleTickerVisibility(start);
+  showNewsTicker(start);
 }
 
-// Toggle the visibility of the tickerText (by color)
-function toggleTickerVisibility(audioPaused) {
+// Show/hide tickerText (toggle color)
+function showNewsTicker(visible) {
   var element = getElement("tickerText");
   if (element !== null) {
-    if (audioPaused) {
+    if (visible) {
       element.style.color = "white";
     } else {
       element.style.color = "black";
@@ -60,43 +60,43 @@ function toggleTickerVisibility(audioPaused) {
 }
 
 // Add the wobble class to content
-function startWobbleAnimation(start) {
+function enableWobbleAnimation(start) {
   addClassToElement("wobble", "content", start);
 }
 
-// Start the flickering noise animation
+// Start the flickering animation (random start/stop noise animation)
 function startFlickerAnimation() {
   enableNoiseAnimation(true);
-  noiseAnimationTimer = setTimeout(function() { restartFlickerAnimation(); }, Math.random()*flickerInterval);
+  flickerAnimationTimer = setTimeout(function () { restartFlickerAnimation(); }, Math.random() * flickerInterval);
 }
 
 // Stops and restarts flickering noise animation after random timeout
 function restartFlickerAnimation() {
-  stopNoiseAnimation();
-  noiseAnimationTimer = setTimeout(function() { startFlickerAnimation(); }, Math.random()*flickerInterval);
+  stopFlickerAnimation();
+  flickerAnimationTimer = setTimeout(function () { startFlickerAnimation(); }, Math.random() * flickerInterval);
 }
 
 // Stop the flickering noise animation
-function stopNoiseAnimation() {
-  clearTimer(noiseAnimationTimer);
+function stopFlickerAnimation() {
+  clearTimer(flickerAnimationTimer);
   enableNoiseAnimation(false);
 }
 
 // Stop the ticker animation
 function stopTickerAnimation() {
   clearTimer(tickerAnimationTimer);
-  startTickerAnimation(false);
+  enableTickerAnimation(false);
 }
 
 // Stop the wobble animation
 function stopWobbleAnimation() {
   clearTimer(wobbleAnimationTimer);
-  startWobbleAnimation(false);
+  enableWobbleAnimation(false);
 }
 
 // Stop noise, wobble & ticker animations
 function stopAnimations() {
-  stopNoiseAnimation();
+  stopFlickerAnimation();
   stopWobbleAnimation();
   stopTickerAnimation();
 }
@@ -124,15 +124,15 @@ function toggleAudioStreamPlayback() {
 }
 
 // Toggle the audio buttons, ticker visibility & animations
-function toggleAudioUiState( audioPaused ) {
-    toggleAudioPlayButtons( audioPaused );
-    if( audioPaused ) {
-      startAnimations(animationDelay);
-    } else {
-      stopAnimations();
-    }
-    stopLogoZoomLoop( audioPaused );
-    stopLogoRotation( audioPaused );
+function toggleAudioUiState(audioPaused) {
+  toggleAudioPlayButtons(audioPaused);
+  if (audioPaused) {
+    startAnimations(animationDelay);
+  } else {
+    stopAnimations();
+  }
+  stopLogoZoomLoop(audioPaused);
+  stopLogoRotation(audioPaused);
 }
 
 // Toggle audio play / pause button image
@@ -148,11 +148,11 @@ function toggleAudioPlayButtons(audioPaused) {
 }
 
 // Remove the zoomLoop class from logo
-function stopLogoZoomLoop( stop ) {
+function stopLogoZoomLoop(stop) {
   addClassToElement("zoomLoop", "logo", !stop);
 }
 
 // Remove the rotateY360 class from turnaroundLogo
-function stopLogoRotation( stop ) {
+function stopLogoRotation(stop) {
   addClassToElement("rotateY360", "turnaroundLogo", !stop);
 }
