@@ -46,10 +46,12 @@
       <h1>.masima.</h1>
     </header>
 
-    <div class="content">
+    <div class="content" id="content">
       <div class="turnaround-container" ontouchstart="this.classList.toggle('hover')" onclick="onTurnaroundContainerClicked()">
         <div class="turnaround" id="turnaroundLogo">
-          <div class="front zoomIn blurLogo" id="logo"></div>
+          <div class="front zoomIn blurLogo" id="logo">
+            <canvas id="canvas">This browser doesn’t support canvas objects</canvas>
+          </div>
           <div class="back blurBack">
             <button id="audioButton" type="button" ></button>
             <audio id="mp3">
