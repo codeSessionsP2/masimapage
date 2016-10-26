@@ -32,5 +32,5 @@ git config user.name "travis"
 git config user.email "travis@email.com"
 
 # Commit and push
-git commit -m "CI Deployment to Github Pages (master@$head)"
+git commit -m "CI Deployment to Github Pages ($user@$head)"
 git push --force --quiet "https://${GH_TOKEN}@$remote" gh-pages:gh-pages > /dev/null 2>&1
