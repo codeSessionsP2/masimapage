@@ -5,13 +5,32 @@
 url=$(git config remote.origin.url)
 
 # Remove 'https://' prefix and '.git' suffix
-remotepath=$(echo "${url:8:-4}")
-echo "Deploying to $remotepath into gh-pages branch"
+remote=$(echo "${url:8:-4}")
+echo "Deploying to $remote into branch gh-pages"
 
-cd build
-git init
+# Extract user & repo names
+set -- "$remote" 
+IFS="/"; declare -a split=($*) 
+user="${split[1]}"
+repo="${split[2]}"
+
+# Clone master branch from user repo
+git clone --quiet "https://$user:${GH_TOKEN}@github.com/$user/$repo.git" --branch=master gh-pages
+cd gh-pages
+
+# Get latest commit ID from master branch
+head=$(git log --format="%h" -n 1)
+
+# Switch to gh-pages + apply changes
+git checkout --quiet gh-pages
+cp -rf ../build/* .
+git add -A
+git status
+
+# Setup travis git user
 git config user.name "travis"
 git config user.email "travis@email.com"
-git add .
-git commit -m "CI Deployment to Github Pages"
-git push --force --quiet "https://${GH_TOKEN}@$remotepath" master:gh-pages > /dev/null 2>&1
+
+# Commit and push
+git commit -m "CI Deployment to Github Pages (master@$head)"
+git push --force --quiet "https://${GH_TOKEN}@$remote" gh-pages:gh-pages > /dev/null 2>&1
