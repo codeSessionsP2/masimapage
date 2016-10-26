@@ -1,5 +1,5 @@
 #!/bin/bash
-# Script used for travis to push build folder content to gh-pages branch
+# Script used by travis to push build folder content to gh-pages branch
 
 # Get repo url (should be https://github.com/user/repo.git)
 url=$(git config remote.origin.url)
@@ -15,8 +15,8 @@ user="${split[1]}"
 repo="${split[2]}"
 
 # Clone master branch from user repo
-git clone --quiet "https://$user:${GH_TOKEN}@github.com/$user/$repo.git" --branch=master gh-pages
-cd gh-pages
+git clone --quiet "https://$user:${GH_TOKEN}@github.com/$user/$repo.git" --branch=master source
+cd source
 
 # Get latest commit ID from master branch
 head=$(git log --format="%h" -n 1)
