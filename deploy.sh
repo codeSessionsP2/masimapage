@@ -9,8 +9,8 @@ remote=$(echo "${url:8:-4}")
 echo "Deploying to $remote into branch gh-pages"
 
 # Extract user & repo names
-set -- "$remote" 
-IFS="/"; declare -a split=($*) 
+set -- "$remote"
+IFS="/"; declare -a split=($*)
 user="${split[1]}"
 repo="${split[2]}"
 
@@ -23,6 +23,8 @@ head=$(git log --format="%h" -n 1)
 
 # Switch to gh-pages + apply changes
 git checkout --quiet gh-pages
+git ls-files -z | xargs -0 rm -f
+git ls-tree --name-only -d -r -z HEAD | sort -rz | xargs -0 rmdir
 cp -rf ../build/* .
 git add -A
 
@@ -33,7 +35,7 @@ echo "$status";
 # Setup travis git user, commit and push changes
 if [[ $status != *"nothing to commit"* ]] ; then
   git config user.name "travis"
-  git config user.email "travis@email.com" 
+  git config user.email "travis@email.com"
   git commit -m "CI Deployment to Github Pages ($user@$head)"
   git push --force --quiet "https://${GH_TOKEN}@$remote" gh-pages:gh-pages > /dev/null 2>&1
 fi
