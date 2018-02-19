@@ -65,7 +65,7 @@ gulp.task('remote', function() {
 });
 
 // Compiles scss to css & minifies
-gulp.task('sass', function () {  
+gulp.task('sass', function () {
   return gulp.src(srcDir + '/scss/style.scss')
   .pipe(plumber())
   .pipe(sass({
@@ -80,7 +80,7 @@ gulp.task('sass', function () {
   .pipe(browserSync.reload({stream:true}));
 });
 
-// Concatinate js files & minifies  
+// Concatinate js files & minifies
 gulp.task('scripts', function() {
   return gulp.src([
     // Add js files here, they will be combined in this order
