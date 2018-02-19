@@ -6,17 +6,17 @@
   "devDependencies": {
     "browser-sync": "^2.17.0",
     "gulp": "^3.9.1",
-    "gulp-clean": "^0.3.2",
-    "gulp-clean-css": "^2.0.10",
+    "gulp-clean": "^0.4.0",
+    "gulp-clean-css": "^3.9.2",
     "gulp-concat": "^2.6.0",
     "gulp-gh-pages": "^0.5.4",
-    "gulp-htmlmin": "^3.0.0",
+    "gulp-htmlmin": "^4.0.0",
     "gulp-plumber": "^1.1.0",
     "gulp-remove-files": "0.0.3",
     "gulp-rename": "^1.2.2",
-    "gulp-sass": "^2.3.1",
-    "gulp-uglify": "^2.0.0",
-    "node-neat": "^1.7.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "node-neat": "^2.0.0-beta.0",
     "simple-git": "^1.54.0"
   },
   "scripts": {
