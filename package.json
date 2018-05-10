@@ -5,6 +5,7 @@
   "main": "gulpfile.js",
   "devDependencies": {
     "browser-sync": "^2.17.0",
+    "gift": "^0.10.2",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.4.0",
     "gulp-clean-css": "^3.9.2",
