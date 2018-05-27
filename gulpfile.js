@@ -43,9 +43,10 @@ function cpSourceDir(folderName) {
 gulp.task('build', ['remote', 'sass', 'scripts', 'minify'], function() {
   var files = [];
   files[1] = srcDir + '/budapest.mp3';
+  files[2] = srcDir + '/info.html';
   if( mainline === true ) {
     console.log('Mainline build detected!');
-    files[2] = srcDir + '/CNAME';
+    files[3] = srcDir + '/CNAME';
   }
   cpSourceDir('img');
   cpSourceDir('fonts');

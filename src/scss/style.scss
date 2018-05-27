@@ -59,7 +59,7 @@ a {
     outline: none;
   }
   // Remove moz dashed rect
-  &:focus, &:active, 
+  &:focus, &:active,
   button::-moz-focus-inner,
   &::-moz-focus-inner,
   input::-moz-focus-inner,
@@ -70,7 +70,7 @@ a {
   input[type="file"] > input[type="button"]::-moz-focus-inner {
     border: 0;
     outline: 0;
-  }  
+  }
 }
 
 // Remove moz dashed rect
@@ -87,7 +87,7 @@ button::-moz-focus-inner {
 }
 
 // Blur effect for header (MASIMA)
-.blurHeader { 
+.blurHeader {
   @include blurHelper(0.175vh,0.125vh);
 }
 
@@ -109,6 +109,24 @@ button::-moz-focus-inner {
 // Blur effect for ticker (marquee)
 .blurTicker {
   @include blurHelper(0.125vh,0.1vh);
+}
+
+// Blur effect info link
+.info {
+  @include blurHelper(0.125vh,0.1vh);
+  a {
+    color: white;
+    // Unvisited link
+    &:link {
+      color: white;
+      text-decoration: none;
+    }
+    // Visited link
+    &:visited {
+      color: white;
+      text-decoration: none;
+    }
+  }
 }
 
 // The headline (MASIMA)
@@ -155,7 +173,7 @@ header {
   @include animation('wobble 3.2s infinite');
 }
 
-// Define 360deg rotation (logo) 
+// Define 360deg rotation (logo)
 .rotateY360 {
   transition: 4.5s;
   @include keyframes('rotateY360') {
@@ -181,7 +199,7 @@ header {
     margin: 0 auto;
     height: 50vh;
     width: 50vh;
-    
+
     .turnaround {
       width: 100%;
       height: 100%;
@@ -195,16 +213,16 @@ header {
           @include background_url('../img/logo.svg');
         }
       }
-      .back { 
+      .back {
         @include background_url('../img/spot.svg');
         @include transform(rotateY(180deg));
-        
+
         span {
           display: block;
           line-height: normal;
           padding-top:45%;
         }
-        
+
         button {
           position: absolute;
           width: 100%;
@@ -212,7 +230,7 @@ header {
           border: none;
           display: block;
           @include background_url('../img/play.svg');
-          background-size: 7.5vh 7.5vh;          
+          background-size: 7.5vh 7.5vh;
         }
       }
 
@@ -260,7 +278,7 @@ footer, .ticker {
     width: 50vh;
     white-space: nowrap;
     position: absolute;
-    box-sizing: border-box; 
+    box-sizing: border-box;
     color: black; // Hide text = background-color
     @include backface-visibility(hidden);
   }
@@ -275,7 +293,7 @@ footer, .ticker {
     z-index: 1;
     content: '';
     position: absolute;
-    width: 25vh; 
+    width: 25vh;
     height: 3vh;
     top: 0vh;
   }
