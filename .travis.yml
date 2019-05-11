@@ -3,6 +3,4 @@ node_js:
 - 'node'
 script: gulp release
 after_success:
-- bash ./deploy.sh
-branches:
-  only: master
+  - test $TRAVIS_BRANCH = "master" && bash ./deploy.sh
