@@ -72,6 +72,6 @@ echo "$status";
 if [[ $status != *"nothing to commit"* ]] ; then
   git config user.name "travis"
   git config user.email "travis@email.com"
-  git commit -m "$commitMessage ($user@$head)"
+  git commit -m "$commitMessage (triggered by: $user@$head)"
   git push --force --quiet "$gitPushUrl" gh-pages:gh-pages > /dev/null 2>&1
 fi
