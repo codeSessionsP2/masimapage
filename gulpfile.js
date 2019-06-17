@@ -15,37 +15,41 @@ var gulp = require('gulp');
 var clean = require('gulp-clean');
 var cleanCss = require('gulp-clean-css');
 var concat = require('gulp-concat');
-var ghPages = require('gulp-gh-pages');
 var htmlMin = require('gulp-htmlmin');
 var plumber = require('gulp-plumber');
-var rmFiles = require('gulp-remove-files');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 var neat = require('node-neat');
-var git = require('simple-git')('./');
+var exec = require('child_process').exec;
 var browserSync = require('browser-sync');
+//var set = require('function-name');
 
 // Initial deployment vars
 var branch = 'badBranch';
 var mainline = false;
 
 /* Copies a src folders recrusively to build dir */
-function cpSourceDir(folderName) {
+var cpSourceDir = function cpSourceDir(folderName) {
   return gulp.src(srcDir + '/' + folderName + '/**/*.*', {
     base: srcDir + '/' + folderName
   })
   .pipe(gulp.dest(buildDir + '/' + folderName));
 }
+//set(cpSourceDir, 'cp-src');
+
+gulp.task('cp-src', function(folderName) {
+  return gulp.src(srcDir + '/' + folderName + '/**/*.*', {
+    base: srcDir + '/' + folderName
+  })
+  .pipe(gulp.dest(buildDir + '/' + folderName));
+});
 
 // Checks if the connected repo is from mainlineUser
 gulp.task('remote', function() {
-  return git.getRemotes(true, function(err, remotes) {
-    if( remotes.length == 1 ) {
-      repo = JSON.stringify(remotes[0].refs.push);
-      if( repo.indexOf(mainlineUser) > -1 ) {
-        mainline = true;
-      }
+  return exec('git config remote.origin.url', function (err, stdout, stderr) {
+    if( stdout.indexOf(mainlineUser) > -1 ) {
+      mainline = true;
     }
   });
 });
@@ -106,27 +110,21 @@ gulp.task('build', gulp.series('remote', 'sass', 'scripts', 'minify', function()
   return gulp.src(files).pipe(gulp.dest(buildDir + '/'));
 }));
 
-// Initializes the var branch with current git branch
-gulp.task('branch', function() {
-  return git.branch(function(err, branchSummary) {
-    branch = branchSummary.current;
-  });
-});
-
-// Push build folder content to gh-pages (current git user)
-gulp.task('deploy', gulp.series('build', 'branch', function() {
-  return gulp.src('./' + buildDir +'/**/*')
-  .pipe(ghPages({
-    message: 'Manual Deployment to Github Pages (' + branch + ')'
-  }));
-}));
-
 // Remove development files for deployment (*.hr.*)
 gulp.task('release', gulp.series('build', function () {
   return gulp.src('./' + buildDir + '/**/*.hr.*', {
     base: './' + buildDir
   })
-  .pipe(rmFiles());
+  .pipe(clean());
+}));
+
+// Push build folder content to gh-pages (current git user)
+gulp.task('deploy', gulp.series('release', function() {
+  return exec('chmod +x deploy.sh && ./deploy.sh', function (err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+    console.log(err);
+  });
 }));
 
 // Removes the build directory
