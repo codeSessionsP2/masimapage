@@ -3,6 +3,6 @@ node_js:
 - 'node'
 script: gulp release
 after_success:
-- bash ./deploy.sh
+- bash ./deploy.sh "CI deployment to Github Pages"
 branches:
   only: master

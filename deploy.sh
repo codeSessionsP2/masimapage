@@ -50,10 +50,12 @@ if [ ! -d "source" ]; then
   echo "ERROR: Failed to clone $url"
   exit
 fi
+
 cd source
 
 # Get latest commit ID from master branch
 head=$(git log --format="%h" -n 1)
+user=$(git log -1 --pretty=format:'%an')
 
 # Switch to gh-pages + apply changes
 git checkout --quiet gh-pages
