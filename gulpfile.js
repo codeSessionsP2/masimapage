@@ -15,51 +15,41 @@ var gulp = require('gulp');
 var clean = require('gulp-clean');
 var cleanCss = require('gulp-clean-css');
 var concat = require('gulp-concat');
-var ghPages = require('gulp-gh-pages');
 var htmlMin = require('gulp-htmlmin');
 var plumber = require('gulp-plumber');
-var rmFiles = require('gulp-remove-files');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 var neat = require('node-neat');
-var git = require('simple-git')('./');
+var exec = require('child_process').exec;
 var browserSync = require('browser-sync');
+//var set = require('function-name');
 
 // Initial deployment vars
 var branch = 'badBranch';
 var mainline = false;
 
 /* Copies a src folders recrusively to build dir */
-function cpSourceDir(folderName) {
+var cpSourceDir = function cpSourceDir(folderName) {
   return gulp.src(srcDir + '/' + folderName + '/**/*.*', {
     base: srcDir + '/' + folderName
   })
   .pipe(gulp.dest(buildDir + '/' + folderName));
 }
+//set(cpSourceDir, 'cp-src');
 
-// Copies folders & files from src- to build dir
-// For mainline builds the CNAME file get copied
-gulp.task('build', ['remote', 'sass', 'scripts', 'minify'], function() {
-  var files = [];
-  files[1] = srcDir + '/budapest.mp3';
-  if( mainline === true ) {
-    console.log('Mainline build detected!');
-    files[2] = srcDir + '/CNAME';
-  }
-  cpSourceDir('img');
-  cpSourceDir('fonts');
-  return gulp.src(files).pipe(gulp.dest(buildDir + '/'));
+gulp.task('cp-src', function(folderName) {
+  return gulp.src(srcDir + '/' + folderName + '/**/*.*', {
+    base: srcDir + '/' + folderName
+  })
+  .pipe(gulp.dest(buildDir + '/' + folderName));
 });
 
 // Checks if the connected repo is from mainlineUser
 gulp.task('remote', function() {
-  return git.getRemotes(true, function(err, remotes) {
-    if( remotes.length == 1 ) {
-      repo = JSON.stringify(remotes[0].refs.push);
-      if( repo.indexOf(mainlineUser) > -1 ) {
-        mainline = true;
-      }
+  return exec('git config remote.origin.url', function (err, stdout, stderr) {
+    if( stdout.indexOf(mainlineUser) > -1 ) {
+      mainline = true;
     }
   });
 });
@@ -106,28 +96,36 @@ gulp.task('minify', function() {
   .pipe(gulp.dest(buildDir));
 });
 
-// Push build folder content to gh-pages (current git user)
-gulp.task('deploy', ['build', 'branch'], function() {
-  return gulp.src('./' + buildDir +'/**/*')
-  .pipe(ghPages({
-    message: 'Manual Deployment to Github Pages (' + branch + ')'
-  }));
-});
-
-// Initializes the var branch with current git branch
-gulp.task('branch', function() {
-  return git.branch(function(err, branchSummary) {
-    branch = branchSummary.current;
-  });
-});
+// Copies folders & files from src- to build dir
+// For mainline builds the CNAME file get copied
+gulp.task('build', gulp.series('remote', 'sass', 'scripts', 'minify', function() {
+  var files = [];
+  files[0] = srcDir + '/budapest.mp3';
+  if( mainline === true ) {
+    console.log('Mainline build detected!');
+    files[1] = srcDir + '/CNAME';
+  }
+  cpSourceDir('img');
+  cpSourceDir('fonts');
+  return gulp.src(files).pipe(gulp.dest(buildDir + '/'));
+}));
 
 // Remove development files for deployment (*.hr.*)
-gulp.task('release', ['build'], function () {
+gulp.task('release', gulp.series('build', function () {
   return gulp.src('./' + buildDir + '/**/*.hr.*', {
     base: './' + buildDir
   })
-  .pipe(rmFiles());
-});
+  .pipe(clean());
+}));
+
+// Push build folder content to gh-pages (current git user)
+gulp.task('deploy', gulp.series('release', function() {
+  return exec('chmod +x deploy.sh && ./deploy.sh', function (err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+    console.log(err);
+  });
+}));
 
 // Removes the build directory
 gulp.task('clean', function() {
@@ -136,23 +134,23 @@ gulp.task('clean', function() {
 });
 
 // Browser-sync reload
-gulp.task('bs-reload', ['build'], function () {
+gulp.task('bs-reload', gulp.series('build', function () {
   browserSync.reload();
-});
+}));
 
 // Prepare Browser-sync for localhost
-gulp.task('browser-sync', ['build'], function() {
+gulp.task('browser-sync', gulp.series('build', function() {
   browserSync.init([srcDir + '/css/*.css', srcDir + '/js/*.js'], {
     server: { baseDir: './' + buildDir }
   });
-});
+}));
 
 // Watch scss, js and html files, doing different things with each
-gulp.task('default', ['browser-sync'], function () {
+gulp.task('default', gulp.series('browser-sync', function () {
   // Watch scss, run the sass task on change
   gulp.watch([srcDir + '/scss/*.scss'], ['sass']);
   // Watch js files, run the scripts task on change
   gulp.watch([srcDir + '/js/*.js'], ['scripts']);
   // Watch .html files, run the bs-reload task on change
   gulp.watch([srcDir + '/*.html'], ['bs-reload']);
-});
+}));
