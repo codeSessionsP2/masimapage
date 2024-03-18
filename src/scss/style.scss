@@ -39,12 +39,12 @@ a {
   color: white;
   // Unvisited link
   &:link {
-    color: black;
+    color: white;
     text-decoration: none;
   }
   // Visited link
   &:visited {
-    color: black;
+    color: white;
     text-decoration: none;
   }
   // Mouse over link
