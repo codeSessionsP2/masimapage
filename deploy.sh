@@ -50,6 +50,7 @@ if [ ! -d "source" ]; then
   echo "ERROR: Failed to clone $url"
   exit
 fi
+
 cd source
 
 # Get latest commit ID from master branch
