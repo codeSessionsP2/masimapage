@@ -25,4 +25,4 @@ jobs:
     - name: Build
       run: |
         npm install
-        timeout 15 gulp $? -eq 124 && exit 0 || exit $?
+        timeout 15 gulp build
