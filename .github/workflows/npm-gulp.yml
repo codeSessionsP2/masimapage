@@ -25,4 +25,4 @@ jobs:
     - name: Build
       run: |
         npm install
-        timeout 15 gulp
+        timeout --preserve-status 15 gulp
