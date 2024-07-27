@@ -101,10 +101,10 @@ gulp.task('minify', function() {
 gulp.task('build', gulp.series('remote', 'sass', 'scripts', 'minify', function() {
   var files = [];
   files[0] = srcDir + '/budapest.mp3';
-  //if( mainline === true ) {
-  //  console.log('Mainline build detected!');
-  //  files[1] = srcDir + '/CNAME';
-  //}
+  if( mainline === true ) {
+    console.log('Mainline build detected!');
+    files[1] = srcDir + '/CNAME';
+  }
   cpSourceDir('img');
   cpSourceDir('fonts');
   return gulp.src(files).pipe(gulp.dest(buildDir + '/'));
